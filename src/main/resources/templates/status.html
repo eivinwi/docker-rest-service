@@ -3,23 +3,30 @@
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="../css"/>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"/>
 </head>
 
 <body>
 <div>
-    <table>
-
+    <table class="pure-table">
+        <thead>
+            <tr>
+                <th>Lag</th>
+                <th>Ferdig</th>
+                <th>IP</th>
+                <th>FinTime</th>
+                <th>TimeSpent</th>
+            </tr>
+        </thead>
         <tr th:each="team : ${teams}">
             <td th:text="${team.name}"></td>
             <td th:text="${team.hasFinished}"></td>
-            <td th:text="${team.hostIp}"></td>
-            <td th:text="${team.finishingTime}"></td>
-            <td th:text="${team.timeSpent}"></td>
+            <td th:text="${team.hostIp != null} ? ${team.hostIp} : '-'"></td>
+            <td th:text="${team.finishingTime != null} ? ${team.finishingTime} : '-'"></td>
+            <td th:text="${team.timeSpent != null} ? ${team.timeSpent} : '-'"></td>
         </tr>
-
     </table>
-
-
 </div>
 
 </body>

@@ -65,9 +65,7 @@ public class TeamController implements InitializingBean {
     }
 
     @RequestMapping(value = "/apply", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public Team apply(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView("status");
+    public String apply(HttpServletRequest request, Model model) {
         //@RequestParam(value="name") String name) {
         /*if(name == null || name.isEmpty()) {
             return "Team name not supplied.";
@@ -99,7 +97,7 @@ public class TeamController implements InitializingBean {
             team.setHostIp(addr);
             team.setHasFinished(true);
         }
-        return team;
+        return getStatus(model);
     }
 
     @RequestMapping(value = "/teams", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
