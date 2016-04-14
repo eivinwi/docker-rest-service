@@ -27,12 +27,14 @@ public class TeamController implements InitializingBean {
 
     @Value("${teams.names}")
     private List<String> teamNames;
+    @Value("${tasks.numTasks}")
+    private Integer numTasks;
 
     private Map<String, Team> teams = new HashMap<>();
 
     public void afterPropertiesSet() {
         for(String teamName : teamNames) {
-            teams.put(teamName, new Team(teamName));
+            teams.put(teamName, new Team(teamName, numTasks));
         }
         Team.startTime = Instant.now();
     }
@@ -45,6 +47,7 @@ public class TeamController implements InitializingBean {
                 hasFinished++;
             }
         }
+        model.addAttribute("numTasks", numTasks);
         model.addAttribute("hasFinished", hasFinished);
         model.addAttribute("registered", teams.size());
         model.addAttribute("teams", teams.values());

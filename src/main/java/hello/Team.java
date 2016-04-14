@@ -13,16 +13,19 @@ public class Team implements Comparable {
     public static Instant startTime;
 
     private String name;
+    private boolean tasks[];
+
     private boolean hasFinished;
     private String timeSpent;
     private String finishingTime;
     private String hostIp;
 
-    public Team(String name) {
+    public Team(String name, Integer numTasks) {
         this.name = name;
         hasFinished = false;
         timeSpent = null;
         finishingTime = null;
+        tasks = new boolean[numTasks];
     }
 
     public static String getStartTime() {
@@ -54,6 +57,14 @@ public class Team implements Comparable {
             );
         }
     }
+
+    public void completeTask(int task) {
+        if (task < tasks.length) {
+            tasks[task] = true;
+        }
+    }
+
+    public boolean[] getTasks() { return tasks; }
 
     public String getFinishingTime() { return finishingTime; }
 
