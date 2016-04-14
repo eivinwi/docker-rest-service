@@ -2,6 +2,9 @@ package hello;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 /**
 * Created by eivwik on 04.04.16.
@@ -12,7 +15,7 @@ public class Team implements Comparable {
     private String name;
     private boolean hasFinished;
     private String timeSpent;
-    private Instant finishingTime;
+    private String finishingTime;
     private String hostIp;
 
     public Team(String name) {
@@ -41,16 +44,18 @@ public class Team implements Comparable {
     public void setHasFinished(boolean hasFinished) {
         if(!this.hasFinished && hasFinished) {
             this.hasFinished = true;
-            this.finishingTime = Instant.now(); //System.currentTimeMillis() - startTime;
-            timeSpent = Duration.between(startTime, finishingTime).toString();
+            this.finishingTime = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME);// Instant.now(); //System.currentTimeMillis() - startTime;
+            long seconds = Duration.between(startTime, Instant.now()).getSeconds();
+            timeSpent = String.format(
+                    "%02d:%02d:%02d",
+                    seconds / 3600,
+                    (seconds % 3600)/ 60,
+                    seconds % 60
+            );
         }
     }
 
-    public Instant getFinishingTime() { return finishingTime; }
-
-    public String getTotalTimeString() {
-        return (finishingTime != null)? finishingTime.toString() : null;
-    }
+    public String getFinishingTime() { return finishingTime; }
 
     public String getTimeSpent() { return timeSpent; }
 

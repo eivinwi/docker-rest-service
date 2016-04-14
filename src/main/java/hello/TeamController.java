@@ -1,53 +1,40 @@
 package hello;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
 
-import javafx.util.Pair;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import javax.servlet.http.HttpServletRequest;
 
 @EnableWebMvc
 @Controller
+@PropertySource("classpath:teams.properties")
 public class TeamController implements InitializingBean {
 
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
+
+    @Value("${teams.names}")
+    private List<String> teamNames;
+
     private Map<String, Team> teams = new HashMap<>();
 
     public void afterPropertiesSet() {
-        createTestTeams();
+        for(String teamName : teamNames) {
+            teams.put(teamName, new Team(teamName));
+        }
         Team.startTime = Instant.now();
-    }
-
-    private void createTestTeams() {
-        teams.put("testTeam", new Team("testTeam"));
-        teams.put("uWotM8", new Team("uWotM8"));
-    }
-
-    @RequestMapping(value = "/test")
-    public String doTest() {
-        return "test";
     }
 
     @RequestMapping(value = "/status")
@@ -66,18 +53,6 @@ public class TeamController implements InitializingBean {
 
     @RequestMapping(value = "/apply", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public String apply(HttpServletRequest request, Model model) {
-        //@RequestParam(value="name") String name) {
-        /*if(name == null || name.isEmpty()) {
-            return "Team name not supplied.";
-        }
-        if(!teams.containsKey(name)) {
-            return "Team name " + name + " is incorrect, does not exist in predefined list.";
-        }
-        if(teams.get(name)) {
-            return "Team " + name + " has already registered";
-        }*/
-        // Valid team, check request
-
         String name = (request.getHeader("name") != null)? request.getHeader("name") : "";
         if(name.isEmpty()) {
            return null;
@@ -114,7 +89,7 @@ public class TeamController implements InitializingBean {
         json.put("teams", teams.values());
         return json;
     }
-
+/*
     @RequestMapping(value = "/scoreboard", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public List scoreBoard() {
@@ -122,7 +97,7 @@ public class TeamController implements InitializingBean {
         Collections.sort(list);
         return list.stream().map(t -> new Pair<>(t.getName(), t.getTotalTimeString())).collect(Collectors.toList());
     }
-
+*/
 }
 
 

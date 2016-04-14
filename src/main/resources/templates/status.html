@@ -3,13 +3,25 @@
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" href="../css"/>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/status.css"/>
+
+    <script src="/webjars/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
+
+    <script type='text/javascript'>
+        $(document).ready(function() {
+            $('#hasFinished').each(function () {
+                var text = $(this).text().toUpperCase();
+                if (text === "TRUE") {
+                    $(this).css('color', 'green').css('font-weight', 'bold');
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
 <div>
-    <table class="pure-table">
+    <table>
         <thead>
             <tr>
                 <th>Lag</th>
@@ -21,7 +33,7 @@
         </thead>
         <tr th:each="team : ${teams}">
             <td th:text="${team.name}"></td>
-            <td th:text="${team.hasFinished}"></td>
+            <td id="hasFinished" th:text="${team.hasFinished}"></td>
             <td th:text="${team.hostIp != null} ? ${team.hostIp} : '-'"></td>
             <td th:text="${team.finishingTime != null} ? ${team.finishingTime} : '-'"></td>
             <td th:text="${team.timeSpent != null} ? ${team.timeSpent} : '-'"></td>
