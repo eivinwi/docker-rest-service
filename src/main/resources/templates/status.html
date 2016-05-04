@@ -1,5 +1,4 @@
 <!DOCTYPE HTML>
-<!--suppress ThymeleafVariablesResolveInspection -->
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Getting Started: Serving Web Content</title>
@@ -10,10 +9,10 @@
 
     <script type='text/javascript'>
         $(document).ready(function() {
-            $('#hasFinished').each(function () {
+            $('.unfinished').each(function () {
                 var text = $(this).text().toUpperCase();
                 if (text === "TRUE") {
-                    $(this).css('color', 'green').css('font-weight', 'bold');
+                    $(this).removeClass('unfinished').addClass('finished');
                 }
             });
         });
@@ -26,7 +25,7 @@
         <thead>
             <tr>
                 <th>Lag</th>
-                <th colspan="{${numTasks}}">Oppgaver</th>
+                <th colspan="5">Oppgaver</th>
                 <th>Ferdig</th>
                 <th>IP</th>
                 <th>FinTime</th>
@@ -35,15 +34,8 @@
         </thead>
         <tr th:each="team : ${teams}">
             <td th:text="${team.name}"></td>
-            <td th:each="task : ${team.tasks}">
-                <span th:switch="${task}">
-                    <span th:case="null">-</span>
-                    <span th:case="*">
-                        <span th:utext="${task}">Task</span>
-                    </span>
-                </span>
-            </td>
-            <td id="hasFinished" th:text="${team.hasFinished}"></td>
+            <td class="unfinished whiteText" th:each="task : ${team.tasks}" th:utext="${task}"></td>
+            <td id="allDone" class="unfinished whiteText" style="font-size:150%" th:text="${team.hasFinished}"></td>
             <td th:text="${team.hostIp != null} ? ${team.hostIp} : '-'"></td>
             <td th:text="${team.finishingTime != null} ? ${team.finishingTime} : '-'"></td>
             <td th:text="${team.timeSpent != null} ? ${team.timeSpent} : '-'"></td>

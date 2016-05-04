@@ -13,19 +13,25 @@ public class Team implements Comparable {
     public static Instant startTime;
 
     private String name;
+    private boolean applied;
     private boolean tasks[];
-
-    private boolean hasFinished;
     private String timeSpent;
     private String finishingTime;
     private String hostIp;
 
     public Team(String name, Integer numTasks) {
         this.name = name;
-        hasFinished = false;
         timeSpent = null;
         finishingTime = null;
         tasks = new boolean[numTasks];
+    }
+
+    public boolean isApplied() {
+        return applied;
+    }
+
+    public void setApplied() {
+        this.applied = true;
     }
 
     public static String getStartTime() {
@@ -41,22 +47,26 @@ public class Team implements Comparable {
     }
 
     public boolean isHasFinished() {
-        return hasFinished;
+        for(boolean b : tasks) {
+            if(!b) return false;
+        }
+        setHasFinished();
+        return true;
     }
 
-    public void setHasFinished(boolean hasFinished) {
-        if(!this.hasFinished && hasFinished) {
-            this.hasFinished = true;
+    public void setHasFinished() {
+        if(finishingTime == null) {
             this.finishingTime = LocalDateTime.now().format(DateTimeFormatter.ISO_LOCAL_TIME);// Instant.now(); //System.currentTimeMillis() - startTime;
             long seconds = Duration.between(startTime, Instant.now()).getSeconds();
             timeSpent = String.format(
                     "%02d:%02d:%02d",
                     seconds / 3600,
-                    (seconds % 3600)/ 60,
+                    (seconds % 3600) / 60,
                     seconds % 60
             );
         }
     }
+
 
     public void completeTask(int task) {
         if (task < tasks.length) {
@@ -68,7 +78,17 @@ public class Team implements Comparable {
 
     public String getFinishingTime() { return finishingTime; }
 
-    public String getTimeSpent() { return timeSpent; }
+    public String getTimeSpent() {
+        if(!isHasFinished()) {
+            long seconds = Duration.between(startTime, Instant.now()).getSeconds();
+            timeSpent = String.format(
+                "%02d:%02d:%02d",
+                seconds / 3600,
+                (seconds % 3600) / 60,
+                seconds % 60);
+        }
+        return timeSpent;
+    }
 
     public String getHostIp() {
         return hostIp;

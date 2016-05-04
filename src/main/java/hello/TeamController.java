@@ -39,7 +39,7 @@ public class TeamController implements InitializingBean {
         Team.startTime = Instant.now();
     }
 
-    @RequestMapping(value = "/status")
+    @RequestMapping(value = "/status", method = RequestMethod.GET)
     public String getStatus(Model model) {
         int hasFinished = 0;
         for (Team t : teams.values()) {
@@ -54,7 +54,7 @@ public class TeamController implements InitializingBean {
         return "status";
     }
 
-    @RequestMapping(value = "/apply", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/apply", produces = MediaType.APPLICATION_JSON_VALUE)
     public String apply(HttpServletRequest request, Model model) {
         String name = (request.getHeader("name") != null)? request.getHeader("name") : "";
         if(name.isEmpty()) {
@@ -73,8 +73,38 @@ public class TeamController implements InitializingBean {
         } else {
             team = teams.get(name);
             team.setHostIp(addr);
-            team.setHasFinished(true);
+            team.setApplied();
         }
+        return getStatus(model);
+    }
+
+    @RequestMapping(value = "/complete", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String completeTask(HttpServletRequest request, Model model) {
+        String name = request.getHeader("name");
+        String completed = request.getHeader("task");
+        if(name == null || name.isEmpty() || completed == null || completed.isEmpty() || !teams.containsKey(name)) {
+            model.addAttribute("reason", "Invalid request: " + request.toString());
+            return "error";
+        }
+        Team team = teams.get(name);
+        if(!team.isApplied()) {
+            model.addAttribute("reason", "Team " + name + " has not yet applied.");
+            return "error";
+        }
+
+        Integer completedNum = Integer.parseInt(completed);
+        if(completedNum < 0 || completedNum > numTasks) {
+            model.addAttribute("reason", "Invalid task number: " + completedNum);
+            return "error";
+        }
+
+        String addr = request.getRemoteAddr();
+        if(!team.getHostIp().equals(addr)) {
+            model.addAttribute("reason", "Request addr does not match " + team.getName() + "'s IP of " + team.getHostIp());
+            return "error";
+        }
+
+        teams.get(name).completeTask(completedNum);
         return getStatus(model);
     }
 
