@@ -45,35 +45,36 @@
 </div>
 <div class="container">
 
-    <h1>Lage egne Docker images</h1>
+    <h1>Oppgave 1 - Lage egne Docker images</h1>
     <p>
         Å kjøre ferdig-lagde images som hello-world i eksempelet fra installasjonsguiden er jo fint og flott, men for at
         ting skal bli virkelig spennende må man lage sine egne images! Måten man bygger images på i Docker er å lage en
         dockerfil med instruksjoner, som som utføres under byggingen av imaget (et kjent konsept for de av dere som har
-        brukt Makefiles!).
+        brukt Makefiles!). Deretter kan man kjøre containere basert på imaget.
     </p>
 
-    <h2>Oppgave</h2>
+    <h2>a)</h2>
     <p>
-        Endre filen 'Dockerfile' i mappen 'docker', slik at containeren vil kjøre linux-kommandoen "echo" med argumentet
+        Endre filen 'Dockerfile' i mappen 'oppgave_1', slik at containeren vil kjøre linux-kommandoen "echo" med argumentet
         "Hello World, this is Docker!" når den starter opp. Bruk Dockers bygge-kommando for å utføre instruksjonene i
         Dockerfile for å bygge imaget.
     </p>
 
-    <div id="fremgang">
-        <h2>Fremgang</h2>
-        <div id="1" class="task">a) </div>
-    </div>
+    <h2>b)</h2>
+    <p>
+        List ut alle lokale docker images, og se at imaget som ble bygd i Oppgave a) nå er med på listen.
+    </p>
 
+    <h2>c)</h2>
+    <p>
+        Kjør en container basert på imaget du nettopp lagde, og se at forventet tekst blir skrevet ut fra echo-kommandoen.
+    </p>
 
     <h2>Nyttige lenker</h2>
     <ul>
-        <li><a href="https://docs.docker.com/engine/userguide/containers/dockerimages/">Docker Docs - Images</a></li>
+        <li><a href="https://docs.docker.com/engine/userguide/eng-image/baseimages/">Docker Docs - Create a Base Image</a></li>
+        <li><a href="https://docs.docker.com/engine/userguide/containers/dockerimages/#listing-images-on-the-host">List Docker Images</a></li>
     </ul>
-
-    <h3>Hint</h3>
-
-
 </div>
 
 
