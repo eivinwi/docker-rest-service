@@ -15,7 +15,7 @@
         $(document).ready(function () {
             $('#navigation').load('../navbar.html');
 
-            $('.task').each(function() {
+            /*$('.task').each(function() {
                 var $id = $(this).attr("id");
                 var dataElem = {"task": $id};
                 $.ajax({
@@ -24,7 +24,7 @@
                 }).done(function(data) {
                     $('#' + $id).append('<div>'+data+'</div>');
                 });
-            });
+            });*/
         });
     </script>
 </head>
@@ -36,9 +36,9 @@
 </div>
 
 <div class="container">
-    <h1>Lage clustere med Docker Swarm</h1>
+    <h1>Oppgave 6 - Lage clustere med Docker Swarm</h1>
     <p>
-        En Docker Swarm er et cluster av docker-machines, der <b>noder</b> blir styrt av en (eller flere) <b>Swarm manager(e)</b>.
+        En Docker Swarm er et cluster av docker-machines, der <b>noder</b> blir styrt av en eller flere <b>Swarm manager(e)</b>.
         Dette er en form for abstraksjon, og sett utenfra er en swarm manager ekvivalent med en normal docker machine. Forskjellen
         er at manageren automatisk kan fordele containere på de nodene som til enhver tid har mest ledig kapasitet, og gjør
         det lettere å skalere en applikasjon. En Swarm kan enkelt utvides med flere noder etter behov.
@@ -46,12 +46,14 @@
 
     <h2>a)</h2>
     <p>
-        Bruk docker-machine til å lage en Swarm med minst 3 noder og en Swarm Manager.
+        Bruk docker-machine til å lage en Swarm med minst 3 noder og en Swarm Manager. For å sette en swarm-maskin som aktiv
+        brukes kommandoen 'eval "$(docker-machine env --swarm &ltnavn-på-maskin&gt)"'.
+        Sett swarm-manageren som aktiv, og bruk deretter "docker info" for å se dens status, med bl.a. hvor mange noder den inneholder,
+        nodenes IP, hvor mange containere hver node kjører osv.
     </p>
-    <p>
-        Tips: bruk "docker info" på swarm-manageren for å se dens status, med bl.a. hvor mange noder den inneholder,
-        nodenes IP osv.
-        Tips: kopier og lagre Swarm-token etter den har blitt generert! Den trengs for å interaktere med clusteret.
+    <p class="warning">
+        Noter ned Swarm-tokenen etter at den har blitt generert, ettersom den trengs for å interaktere med swarmen,
+        og om man mister den må man lage en ny swarm.
     </p>
 
     <h2>b)</h2>
@@ -59,11 +61,11 @@
         Todo: et program det er meningsfullt å kjøre på flere noder.
     </p>
 
-    <div id="fremgang">
+    <!--div id="fremgang">
         <h2>Fremgang</h2>
         <div id="8a" class="task">a) </div>
         <div id="8b" class="task">b) </div>
-    </div>
+    </div-->
 
     <h2>Nyttige lenker</h2>
     <ul>
