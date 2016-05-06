@@ -41,36 +41,38 @@
         Som nevnt i introen er en av fordelen med Docker containers er at de er "self-contained", at de har med seg alle
         avhengigheter som trengs for å kjøre applikasjonen. Containere kan derfor (i teorien) kjøres overalt hvor
         docker er installert. Dette gjør programmer bygget på Docker ekstremt portable. Når man har bygget et Docker image eksisterer det i det lokale docker-miljøet. Dersom man vil ha imaget på en fil
-        kan man benytte Dockers save-kommando. Dette kan for eksempel være nyttig for å flytte imaget fra en maskin til en annen.
+        kan man benytte Dockers save-kommando. Dette kan for eksempel være nyttig for å flytte imaget fra en maskin til en annen,
+        eller for å deploye til en server.
     </p>
 
 
     <h2>a)</h2>
     <p>
-        Lagre Docker imaget fra forrige oppgave til en fil.
+        Lagre Docker imaget fra forrige oppgave til en aksesserbar fil.
     </p>
 
     <h2>b)</h2>
     <p>
-        Overfør Docker imaget til serveren spesifisert under. Her kan man benytte for eksempel SCP eller FTP.
+        Overfør denne filen til serveren spesifisert under. Her kan man benytte for eksempel SCP eller FTP.
     </p>
 
     <h2>c)</h2>
     <p>
-        Last imaget inn i Docker-miljøet på serveren.
+        SSH deg inn på serveren og last imaget inn i Docker-miljøet.
     </p>
 
     <h2>d)</h2>
     <p>
-        Kjør deretter en container av imaget på serveren, på samme måte som i tidligere oppgaver. Sjekk at containeren
+        Kjør deretter en container av imaget på serveren, på samme måte som i tidligere oppgaver (husk å mappe portene på
+        samme måte som i oppgave 3). Sjekk at containeren
         kjører ved å gå til http://&ltserver-ip&gt/test, og se at den skriver ut lagnavnet du spesifiserte i oppgave 3.
-        Du har nå prodsatt en docker-container på en server!
+        Du har nå prodsatt en docker-container på en server! Var ikke det fantastiskt enkelt og praktisk?
     </p>
 
     <h2>Server</h2>
     <p>
-        TODO
-        IP: 127.0.0.1
+        Se lappen du ble tildelt for informasjon om teamets tildelte server, inkludert IP, bruker og passord.
+        Dersom du ikke har fått en lapp, spør oss om en!
     </p>
 
     <h2>Nyttige lenker</h2>

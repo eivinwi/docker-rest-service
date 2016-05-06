@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Docker Workshop - Machine</title>
+
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#navigation').load('../navbar.html');
+
+           /* $('.task').each(function() {
+                var $id = $(this).attr("id");
+                var dataElem = {"task": $id};
+                $.ajax({
+                    url: '/check',
+                    data: {
+                        task: $id
+                    }
+                }).done(function(data) {
+                    if(data === "korrekt") {
+                        $('#' + $id).append('<span class="fa fa-check-circle"></span>');
+                    } else {
+                        $('#' + $id).append('<span class="fa fa-times-circle">'+data+'</span>');
+                    }
+                }).fail(function(error) {
+                    console.log("Failure while retrieving task progression: " + error);
+                });
+            });*/
+        });
+    </script>
+</head>
+
+<body>
+
+<div class="nav-container">
+    <div id="navigation" ></div>
+</div>
+
+<div class="container">
+    <h1>Oppgave 5 - Docker Machine</h1>
+    <p class="warning">
+        <b>NB:</b> det er fullt lovlig å starte på denne oppgaven når man vil, men planen er å ta en liten pause når flere nærmer seg
+        dette punktet, for å ta en liten forklaring av Docker-Machine, hva det er og hvordan det brukes. Har du kommet hit tidlig,
+        så begynn gjerne med å se på lenkene under.
+    </p>
+
+    <p>
+        Som vi så i forrige oppgave er docker-apper fine og portable, men å lagre til fil og flytte de rundt manuelt
+        er hverken smidig eller praktisk, og skalerer dårlig til større systemer. Docker-Machine kan brukes for å
+        forenkle distribusjonen av docker-images til lokale og eksterne maskiner, og også til å automatisere oppsett av servere.
+    </p>
+
+    <h2>a)</h2>
+    <p>
+        Bruk Docker-Machine for å lage en virtuell lokal maskin med driveren Virtualbox. Dette betyr at du oppretter en Docker
+        host for kjøring av Docker containere i en Virtualbox virtuell maskin. Dette kan virke som et litt merkelig konsept,
+        men er nyttig for å kunne teste deployment lokalt på samme måte som remote.
+    </p>
+    <p>
+        Tips: en oversikt over tilgjengelige docker-machines (både lokalt og remote) kan finnes med kommandoen 'docker-machine ls'.
+        'docker info &ltmachine-navn&gt' viser informasjon om den angitte maskinen.
+    </p>
+
+    <h2>b)</h2>
+    <p>
+        Docker-machine støtter de fleste store hosting-leverandører, og de som ikke støttes direkte kan fortsatt settes
+        opp manuelt, med noen ekstra steg. Distribusjon av containere blir kraftig forenklet, og man trenger faktisk kun <b>én</b> kommando i docker-machine
+        for å gjøre følgende, helt automagisk:
+    </p>
+        <ul>
+            <li>Starte opp en ny server</li>
+            <li>Installere og konfigurere Docker Engine på serveren</li>
+            <li>Legge inn serveren som en maskin i Docker-Machine</li>
+            <li>Sette opp SSH, inkl generering og importering av keypair</li>
+        </ul>
+    <p>
+        Bruk docker-machines 'create' kommando for å starte opp en DigitalOcean-server ved å bruke den utdelte API-keyen.
+        Bruk teamnavnet deres som navn på maskinen (uten eventuelle mellomrom og spesial-tegn). Bekreft at serveren har
+        blitt opprettet og lagt til ved å sjekke 'docker-machine ls'.
+    </p>
+
+    <h2>c)</h2>
+    <p>
+        Docker-kommandoer blir eksekvert på maskinen som er satt som 'active' i docker-machine, pass på at serveren laget
+        i oppgave b) er markert som 'active' (se 'docker-machine ls'). Hvilken maskin som er aktiv blir satt i enviroment-variable,
+        som kan genereres med 'docker-machine env &ltmaskin-navn&gt'. For å faktisk sette dette til enviroment-variablene
+        brukes kommandoen 'eval "$(docker-machine env &ltmaskin-navn&gt)"'. Når korrekt maskin er satt til aktiv,
+        kjør containeren på denne maskinen (husk å mappe portene på samme måte om i Oppgave 3). Finn ip-en til serveren
+        med docker-machine, og besøk den i nettleseren for å verifisere at containeren kjører.
+    </p>
+
+    <h2>d)</h2>
+    <p>
+        Bruk docker-machines innebygde ssh-kommando for å logge inn på maskinen - merk at du nå er logget inn på en virtuell
+        maskin på en server hos Digital Ocean! Logget inn på docker-maskinen kan man bruke samme docker-kommandoer som lokalt.
+        Bruk dette for å observere at docker-containeren kjører. Prøv f.eks 'docker images' og 'docker ps'.
+    </p>
+
+    <!-- div id="fremgang">
+        <h2>Fremgang</h2>
+        <div id="6a" class="task">a) </div>
+        <div id="6b" class="task">b) </div>
+        <div id="6c" class="task">b) </div>
+    </div-->
+
+    <h2>Digital OceanAPI-key</h2>
+    <p>
+        'TODO: API_KEY goes here'.
+    </p>
+    <p class="warning">
+        <b>NB:</b> For å sitere Linux' sudo-kommando: "With great power comes great responsibility.". Vi gir her fritt ut API-nøkkelen
+        til en felles Digital Ocean konto. Selv om mye morsomt kan gjøres med den, så husk på at dersom noen går berserk
+        med denne blir vi nødt til å revoke nøkkelen, og dermed ødelegge moroa for alle andre.
+    </p>
+
+    <h2>Nyttige lenker</h2>
+    <ul>
+        <li><a href="https://docs.docker.com/machine/overview/">DockerMachine konsept</a></li>
+        <li><a href="https://docs.docker.com/machine/get-started/">DockerMachine - Lokalt</a></li>
+        <li><a href="https://docs.docker.com/machine/get-started-cloud/">DockerMachine - Cloud</a></li>
+        <li><a href="https://docs.docker.com/machine/examples/ocean/">Digital Ocean Example</a> </li>
+    </ul>
+
+    <h3>Annen info</h3>
+    <p>
+        Docker har også sitt eget kontrollpanel, <a href="https://docs.docker.com/ucp/">Docker Universal Control Plane</a>,
+        som kan brukes for å deploye og kontrollere docker-applikasjoner. Dette verktøyet er dog fortsatt i utvikling og
+        er ikke nødvendigvis modent for bruk i produksjon. Det finnes også en rekke tredjeparts-applikasjoner for å håndtere
+        Docker-containere, deployment osv. Mange av disse er fortsatt i versjon 0.x.
+    </p>
+</div>
+
+</body>
+</html>
