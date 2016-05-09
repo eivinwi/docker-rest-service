@@ -65,6 +65,9 @@
         <a href="http://localhost:8080/test">http://localhost:8080/test</a> i en nettleser
         og se applikasjonen er oppe og kjører og at lagnavn har blitt satt. Stopp applikasjonen før oppgave b).
     </p>
+    <p class="warning">
+        NB: om noe allerede kjører på port 8080 må en annen port spesifiseres.
+    </p>
 
     <h2>b)</h2>
     <p>
@@ -79,8 +82,9 @@
         Mens RUN kun brukes under bygging av image, kan både CMD og ENTRYPOINT brukes for å eksekvere kommandoer under kjøring
         av en container. Forskjellen på disse dersom man kun skal kjøre en kommando er ikke åpenbar, men mens man kan ha
         så mange CMDs man vil, kan man kun ha ett Entrypoint. For containere som er ment å fungere som en executable er
-        det fordelaktig å bruke Entrypoint. TODO: link
+        det fordelaktig å bruke Entrypoint.
     </p>
+    <!-- TODO: link cmd/entrypoint -->
 
     <h2>c)</h2>
     <p>
@@ -89,6 +93,7 @@
         denne gangen Docker-containerens port 8080 som localhosts port 8080. Verifiser at dette har fungert ved å åpne
         <a href="http://localhost:8080/test">http://localhost:8080/test</a>.
     </p>
+    <!-- TODO: vil localhost fungere? -->
 
     <h2>d)</h2>
     <p>
@@ -97,8 +102,12 @@
         den med korrekt path til Dockerfilen for denne oppgaven, og å sette navn på imaget som skal lages!
         Image-navn og path til hvilken Dockerfile som brukes i byggingen spesifiseres i plugin-konfigurasjonen av maven-docker-plugin
         i pom.xml (konfigurasjonen er allerede fyllt inn for Oppgave 3).
-        Bygg imaget med kommandoen &ltmvn clean package docker:build&gt, og se at imaget med navn spesifisert i pom.xml
+        Bygg imaget med kommandoen 'mvn clean package docker:build', og se at imaget med navn spesifisert i pom.xml
         dukker opp i Docker-miljøet (sjekkes med kommandoen 'docker images').
+    </p>
+    <p class="warning">
+        NB: noen har hatt problemer med at Tomcat bruker lang tid på å starte opp. Det kan da hjelpe å legge til
+        '-Djava.security.egd=file:/dev/./urandom' som parameter til Java.
     </p>
 
     <h2>Nyttige lenker</h2>
@@ -109,9 +118,7 @@
         <li><a href="https://docs.docker.com/engine/reference/commandline/run/#publish-or-expose-port-p-expose">Docker Docs - Publish ports</a></li>
         <li><a href="https://github.com/spotify/docker-maven-plugin">Docker-maven-plugin</a></li>
     </ul>
-
 </div>
-
 
 </body>
 </html>

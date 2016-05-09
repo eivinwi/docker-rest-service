@@ -95,12 +95,17 @@
         kjør containeren på denne maskinen (husk å mappe portene på samme måte om i Oppgave 3). Finn ip-en til serveren
         med docker-machine, og besøk den i nettleseren for å verifisere at containeren kjører.
     </p>
+    <p>
+        Tips: Når man ikke har laget noen ekstra docker-maskiner er man i maskinen 'default'. Dersom man vil tilbake til
+        denne bruker man eval-kommandoen nevnt over, med 'default' som parameter.
+    </p>
 
     <h2>d)</h2>
     <p>
         Bruk docker-machines innebygde ssh-kommando for å logge inn på maskinen - merk at du nå er logget inn på en virtuell
         maskin på en server hos Digital Ocean! Logget inn på docker-maskinen kan man bruke samme docker-kommandoer som lokalt.
-        Bruk dette for å observere at docker-containeren kjører. Prøv f.eks 'docker images' og 'docker ps'.
+        Bruk dette for å observere at docker-containeren kjører. Prøv f.eks 'docker images', 'docker ps', 'docker stop &ltcontainer-id&gt'
+        og 'docker start &ltcontainer-id&gt'.
     </p>
 
     <!-- div id="fremgang">

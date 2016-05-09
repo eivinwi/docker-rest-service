@@ -74,7 +74,7 @@
         Bruk Dockers søke-kommando for å finne det offisielle ubuntu-imaget, som inneholder bash, og endre din Dockerfile
         slik at den baserer seg på den nyeste versjonen av dette. Denne kommandoen genererer en liste over matchende images
         fra Docker Hub. Det er også mulig å gå inn på <a href="https://hub.docker.com/">Docker Hub</a> og finne imaget der.
-
+        Stjerner gir en indikasjon på hvor populært et image er, og offisielle images har også en egen markering.
         Bygg og kjør fra Dockerfile på nytt, denne gangen basert på Ubuntu, og observer at containeren nå har tilgang
         på bash, og at scriptet blir kjørt når containeren starter opp!
     </p>
@@ -83,10 +83,9 @@
     <p>
         Det er også mulig å modifisere imaget ved å installere ekstra pakker. Bruk Ubuntus package manager APT via RUN-kommandoen
         i Dockerfile til å installere pakken "curl". Denne blir da installert under byggingen av imaget, og vil være
-        tilgjengelig når containeren startes. Endre også Dockerfilen slik at den kjører for eksempel &ltcurl -L checkip.dyndns.org&gt
+        tilgjengelig når containeren startes. Endre også Dockerfilen slik at den kjører for eksempel 'tcurl -L checkip.dyndns.org'
         ved oppstart. Observer at curl nå er installert og fungerer.
     </p>
-
 
 
     <b>NB: dersom docker har problemer med tilkobling til repositories kan det hjelpe å skru av VPN.</b>
