@@ -51,10 +51,10 @@
         Sett swarm-manageren som aktiv, og bruk deretter "docker info" for å se dens status, med bl.a. hvor mange noder den inneholder,
         nodenes IP, hvor mange containere hver node kjører osv.
     </p>
-    <p class="alert alert-info">
-        <b>NB:</b> Noter ned Swarm-tokenen etter at den har blitt generert, ettersom den trengs for å interaktere med swarmen.
+    <div class="alert alert-info">
+        <b>NB:</b> Noter ned Swarm-tokenen etter at den har blitt generert, ettersom den trengs for å interagere med swarmen.
         Denne token-en kan også finnes ved å kjøre 'docker info' med swarm-masteren satt som aktiv i Docker Machine.
-    </p>
+    </div>
 
     <h2>b)</h2>
     <p>
@@ -68,7 +68,7 @@
         <li>
             Hver av docker maskinene må ha tilgang til imaget for å kunne kjøre en container av det. Om man vil kjøre lokale
             imager distribuert i en swarm må man derfor bygge det for hver maskin. Alternativt kan man benytte programmer
-            for å administrere images og containere, som f.eks <a href="https://docs.docker.com/ucp/overview/">Universal Control Plane</a>.
+            for å administrere images og containere, som f.eks Universal Control Plane (ikke gratis).
         </li>
     </ul>
     Prøv for eksempel å kjøre:
