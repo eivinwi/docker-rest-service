@@ -66,7 +66,7 @@
         og se applikasjonen er oppe og kjører og at lagnavn har blitt satt. Stopp applikasjonen før oppgave b).
     </p>
     <p class="alert alert-danger">
-        NB: om noe allerede kjører på port 8080 må en annen port spesifiseres.
+        <b>NB:</b> om noe allerede kjører på port 8080 må en annen port spesifiseres.
     </p>
 
     <h2>b)</h2>
@@ -77,7 +77,7 @@
         og eksekverer jar-filen ved oppstart. Bygg og kjør så docker containeren. I denne omgangen skal vi bare se at containeren
         og applikasjonen starter opp.
     </p>
-    Hint:
+    <h3>Hint</h3>
     <p>
         Mens RUN kun brukes under bygging av image, kan både CMD og ENTRYPOINT brukes for å eksekvere kommandoer under kjøring
         av en container. Forskjellen på disse dersom man kun skal kjøre en kommando er ikke åpenbar, men mens man kan ha
@@ -105,10 +105,10 @@
         Bygg imaget med kommandoen 'mvn clean package docker:build', og se at imaget med navn spesifisert i pom.xml
         dukker opp i Docker-miljøet (sjekkes med kommandoen 'docker images').
     </p>
-    <p class="warning">
+    <div class="alert alert-warning">
         NB: noen har hatt problemer med at Tomcat bruker lang tid på å starte opp. Det kan da hjelpe å legge til
         '-Djava.security.egd=file:/dev/./urandom' som parameter til Java.
-    </p>
+    </div>
 
     <h2>Nyttige lenker</h2>
     <ul>

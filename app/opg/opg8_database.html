@@ -65,15 +65,16 @@
 
     <h2>b)</h2>
     <p>
-        Docker-containere som kjører databaser er 'data-
-
-        Stop containeren og start den igjen, bruk samme kommandoer som i forrige oppgave og se at databasen fortsatt inneholder
-        alle de samme dataene.
+        Docker-containere som kjører databaser er 'data volume containers'. Disse containerene eksponerer det lokale filsystemet,
+        og gjør det tilgjengelig for andre containere. Det betyr at selv om en container stoppes (og også om den slettes),
+        vil selve databasen fortsatt være inntakt. Stop containeren og start den igjen, bruk samme kommandoer som i forrige oppgave
+        for å se at databasen fortsatt inneholder alle de samme dataene.
     </p>
 
     <h2>c)</h2>
     <p>
-
+        Når lokasjon ikke konfigureres oppretter MySQL imaget databasene i en standard lokasjon (/var/lib/mysql).
+        Sett isteden en selvvalgt mappe som lokasjon.
     </p>
 
     <ul>

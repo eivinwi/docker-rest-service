@@ -63,10 +63,10 @@
         host for kjøring av Docker containere i en Virtualbox virtuell maskin. Dette kan virke som et litt merkelig konsept,
         men er nyttig for å kunne teste deployment lokalt på samme måte som remote.
     </p>
-    <p>
-        Tips: en oversikt over tilgjengelige docker-machines (både lokalt og remote) kan finnes med kommandoen 'docker-machine ls'.
+    <div class="alert alert-info">
+        <b>Tips:</b> en oversikt over tilgjengelige docker-machines (både lokalt og remote) kan finnes med kommandoen 'docker-machine ls'.
         'docker info &lt;machine-navn&gt;' viser informasjon om den angitte maskinen.
-    </p>
+    </div>
 
     <h2>b)</h2>
     <p>
@@ -103,10 +103,10 @@
         Når containeren kjører, bruk docker-machine til å finne ip-en til den nyopprettede maskinen, og besøk
         http://&lt;ip&gt;:8080/test den i nettleseren for å verifisere at containeren kjører. (Husk portmapping)
     </p>
-    <p>
-        Tips: I utgangspunktet, før man har begynte å lage docker-maskiner, så er man i maskinen 'default'. Dersom man
+    <div class="alert alert-info">
+        <b>Tips:</b> I utgangspunktet, før man har begynte å lage docker-maskiner, så er man i maskinen 'default'. Dersom man
         vil tilbake til denne bruker man eval-kommandoen nevnt over, med maskin-navn 'default' som parameter.
-    </p>
+    </div>
 
     <h2>d)</h2>
     <p>
@@ -119,10 +119,12 @@
         Som nevnt i b), maskiner opprettet av docker-machine vil alltid være klargjort med Docker Engine, slik at du her
         faktisk ikke trenger å tenke på manuell installasjon av Docker.
     </p>
-    <p class="warning">
-        NB: Vi har foreløpig ikke funnet noen smidige måter å laste inn docker-machines/få kontakt med remote machines
-        fra andre lokasjoner. Altså kan det bli trøbbel for et team som ønsker å operere på samme docker machines...
-    </p>
+    <div class="alert alert-warning">
+        <b>NB:</b> å aksessere docker host laget av andre krever at man har samme private-key som ble brukt i opprettingen av host-en,
+        og er derfor ikke helt rett frem. Dersom man likvel ønsker å forsøke dette kan det gjøres ved å spesifisere private key
+        når hosten opprettes, og andre på teamet kan da importere host-ene
+        <a href="https://docs.docker.com/machine/drivers/generic/" class="alert-link">som beskrevet her</a>.
+    </div>
 
     <!-- div id="fremgang">
         <h2>Fremgang</h2>
