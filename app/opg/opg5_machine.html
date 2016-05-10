@@ -59,7 +59,7 @@
 
     <h2>a)</h2>
     <p>
-        Bruk Docker-Machine for å lage en virtuell lokal maskin med driveren Virtualbox. Dette betyr at du oppretter en Docker
+        Bruk Docker-Machine for å lage en virtuell lokal maskin med driveren virtualbox. Dette betyr at du oppretter en Docker
         host for kjøring av Docker containere i en Virtualbox virtuell maskin. Dette kan virke som et litt merkelig konsept,
         men er nyttig for å kunne teste deployment lokalt på samme måte som remote.
     </p>
@@ -81,7 +81,7 @@
             <li>Sette opp SSH, inkl generering og importering av keypair</li>
         </ul>
     <p>
-        Bruk docker-machines 'create' kommando for å starte opp en DigitalOcean-server ved å bruke den utdelte API-keyen.
+        Bruk docker-machines 'create' kommando for å starte opp en DigitalOcean-server ved å bruke API-nøkkelen lenger ned på siden her.
         Bruk teamnavnet deres som navn på maskinen (uten eventuelle mellomrom og spesial-tegn). Bekreft at serveren har
         blitt opprettet og lagt til ved å sjekke 'docker-machine ls'.
     </p>
@@ -91,13 +91,21 @@
         Docker-kommandoer blir eksekvert på maskinen som er satt som 'active' i docker-machine, pass på at serveren laget
         i oppgave b) er markert som 'active' (se 'docker-machine ls'). Hvilken maskin som er aktiv blir satt i enviroment-variable,
         som kan genereres med 'docker-machine env &lt;maskin-navn&gt;'. For å faktisk sette dette til enviroment-variablene
-        brukes kommandoen 'eval "$(docker-machine env &lt;maskin-navn&gt;)"'. Når korrekt maskin er satt til aktiv,
-        kjør containeren på denne maskinen (husk å mappe portene på samme måte om i Oppgave 3). Finn ip-en til serveren
-        med docker-machine, og besøk den i nettleseren for å verifisere at containeren kjører.
+        brukes kommandoen 'eval "$(docker-machine env &lt;maskin-navn&gt;)"'.
     </p>
     <p>
-        Tips: Når man ikke har laget noen ekstra docker-maskiner er man i maskinen 'default'. Dersom man vil tilbake til
-        denne bruker man eval-kommandoen nevnt over, med 'default' som parameter.
+        På den nyopprettede maskinen, som du nå har satt til aktiv, skal du kjøre samme container som i oppgave 3. Men,
+        i utgangspunktet er den nyopprettede maskinen tom. Hvis du nå kjører 'docker images', så skal listen være tom.
+        Det er mange muligheter for å få lastet images til maskinen, og om du vil kan du gjenbruke løsningene fra
+        oppgave 3 (bygge image på nytt) eller oppgave 4 (save, load).
+    </p>
+    <p>
+        Når containeren kjører, bruk docker-machine til å finne ip-en til den nyopprettede maskinen, og besøk
+        http://&lt;ip&gt;:8080/test den i nettleseren for å verifisere at containeren kjører. (Husk portmapping)
+    </p>
+    <p>
+        Tips: I utgangspunktet, før man har begynte å lage docker-maskiner, så er man i maskinen 'default'. Dersom man
+        vil tilbake til denne bruker man eval-kommandoen nevnt over, med maskin-navn 'default' som parameter.
     </p>
 
     <h2>d)</h2>
@@ -107,6 +115,14 @@
         Bruk dette for å observere at docker-containeren kjører. Prøv f.eks 'docker images', 'docker ps', 'docker stop &lt;container-id&gt;'
         og 'docker start &lt;container-id&gt;'.
     </p>
+    <p>
+        Som nevnt i b), maskiner opprettet av docker-machine vil alltid være klargjort med Docker Engine, slik at du her
+        faktisk ikke trenger å tenke på manuell installasjon av Docker.
+    </p>
+    <p class="warning">
+        NB: Vi har foreløpig ikke funnet noen smidige måter å laste inn docker-machines/få kontakt med remote machines
+        fra andre lokasjoner. Altså kan det bli trøbbel for et team som ønsker å operere på samme docker machines...
+    </p>
 
     <!-- div id="fremgang">
         <h2>Fremgang</h2>
@@ -115,14 +131,17 @@
         <div id="6c" class="task">b) </div>
     </div-->
 
-    <h2>Digital OceanAPI-key</h2>
+    <h2>Digital Ocean API-key</h2>
     <p>
-        'TODO: API_KEY goes here'.
+        Også kalt access-token:
+    </p>
+    <p>
+        bd6f5a35008ff90999251cbbe024273aee929fafed2519b00fefddba51dc0ef5
     </p>
     <p class="alert alert-danger">
         <b>NB:</b> For å sitere Linux' sudo-kommando: "With great power comes great responsibility.". Vi gir her fritt ut API-nøkkelen
-        til en felles Digital Ocean konto. Selv om mye morsomt kan gjøres med den, så husk på at dersom noen går berserk
-        med denne blir vi nødt til å revoke nøkkelen, og dermed ødelegge moroa for alle andre.
+        til en Digital Ocean konto som i denne workshoppen vil bli delt av alle. Selv om mye morsomt kan gjøres med den,
+        så husk på at dersom noen går berserk med denne blir vi nødt til å revoke nøkkelen, og dermed ødelegge moroa for alle andre.
     </p>
 
     <h2>Nyttige lenker</h2>
