@@ -51,21 +51,23 @@
     <h2>a)</h2>
     <p>
         Bruk søkekommandoen for å finne det offisielle MySQL-imaget, og kjør en container av dette imaget. Aksesser det ved
-        å starte bash i containeren med kommandoen 'docker exec -it &ltnavn eller id&gt bash', og derfra bruke MySQL-kommandoer.
+        å starte bash i containeren med kommandoen 'docker exec -it &lt;navn eller id&gt; bash', og derfra bruke MySQL-kommandoer.
         Opprett en database, og fyll inn litt innhold.
     </p>
     MySQL kommandoer:
     <ul>
         <li>'mysql -p' starter mysql i terminalen</li>
-        <li>CREATE DATBASE &ltdb-navn&gt</li>
+        <li>CREATE DATBASE &lt;db-navn&gt;</li>
         <li>SHOW DATABASES;</li>
-        <li>USE &ltdb-navn&gt</li>
-        <li>CREATE TABLE &lttable-navn&gt </li>
+        <li>USE &lt;db-navn&gt;</li>
+        <li>CREATE TABLE &lt;table-navn&gt; </li>
     </ul>
 
     <h2>b)</h2>
     <p>
-        Stop containeren og start den igjen, bruk samme kommando som i forrige oppgave og se at databasen fortsatt inneholder
+        Docker-containere som kjører databaser er 'data-
+
+        Stop containeren og start den igjen, bruk samme kommandoer som i forrige oppgave og se at databasen fortsatt inneholder
         alle de samme dataene.
     </p>
 

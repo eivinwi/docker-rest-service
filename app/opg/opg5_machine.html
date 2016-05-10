@@ -65,7 +65,7 @@
     </p>
     <p>
         Tips: en oversikt over tilgjengelige docker-machines (både lokalt og remote) kan finnes med kommandoen 'docker-machine ls'.
-        'docker info &ltmachine-navn&gt' viser informasjon om den angitte maskinen.
+        'docker info &lt;machine-navn&gt;' viser informasjon om den angitte maskinen.
     </p>
 
     <h2>b)</h2>
@@ -90,8 +90,8 @@
     <p>
         Docker-kommandoer blir eksekvert på maskinen som er satt som 'active' i docker-machine, pass på at serveren laget
         i oppgave b) er markert som 'active' (se 'docker-machine ls'). Hvilken maskin som er aktiv blir satt i enviroment-variable,
-        som kan genereres med 'docker-machine env &ltmaskin-navn&gt'. For å faktisk sette dette til enviroment-variablene
-        brukes kommandoen 'eval "$(docker-machine env &ltmaskin-navn&gt)"'. Når korrekt maskin er satt til aktiv,
+        som kan genereres med 'docker-machine env &lt;maskin-navn&gt;'. For å faktisk sette dette til enviroment-variablene
+        brukes kommandoen 'eval "$(docker-machine env &lt;maskin-navn&gt;)"'. Når korrekt maskin er satt til aktiv,
         kjør containeren på denne maskinen (husk å mappe portene på samme måte om i Oppgave 3). Finn ip-en til serveren
         med docker-machine, og besøk den i nettleseren for å verifisere at containeren kjører.
     </p>
@@ -104,8 +104,8 @@
     <p>
         Bruk docker-machines innebygde ssh-kommando for å logge inn på maskinen - merk at du nå er logget inn på en virtuell
         maskin på en server hos Digital Ocean! Logget inn på docker-maskinen kan man bruke samme docker-kommandoer som lokalt.
-        Bruk dette for å observere at docker-containeren kjører. Prøv f.eks 'docker images', 'docker ps', 'docker stop &ltcontainer-id&gt'
-        og 'docker start &ltcontainer-id&gt'.
+        Bruk dette for å observere at docker-containeren kjører. Prøv f.eks 'docker images', 'docker ps', 'docker stop &lt;container-id&gt;'
+        og 'docker start &lt;container-id&gt;'.
     </p>
 
     <!-- div id="fremgang">
