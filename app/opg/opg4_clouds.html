@@ -53,31 +53,31 @@
 
     <h2>b)</h2>
     <p>
-        Overfør denne filen til serveren spesifisert under. Her kan man benytte for eksempel SCP eller FTP.
+        Overfør denne filen til din utdelte Digital Ocean-server (be om en egen IP hvis du ikke allerede har fått en).
+        Alle servere har en bruker root, som kan autentiseres med <a href="../workshop.ppk">SSH-nøkkel</a>. Lagre filen
+        lokalt, og last den inn i SSH. For å gjøre det, så kan det være nødvendig først å kjøre kommandoen
+        'eval "$(ssh-agent -s)"'. Selve innlastingen skjer så med kommandoen 'ssh-add &lt;nøkkel&gt;'. Merk at på
+        Windows og Mac har man SSH tilgjengelig i Docker Quickstart Terminal, der man også kjører alle docker-kommandoer.
+        Filoverføringen kan gjøres med SCP, med følgende kommando: 'scp &lt;lagret image-fil&gt; root@&lt;server-ip&gt;:.'.
     </p>
 
     <h2>c)</h2>
     <p>
-        SSH deg inn på serveren og last imaget inn i Docker-miljøet.
+        SSH deg inn på serveren og last imaget inn i Docker-miljøet. Har man sørget for å laste inn privat nøkkel fra b),
+        så kan man logge seg på slik: 'ssh root@&lt;server-ip&gt;'.
     </p>
 
     <h2>d)</h2>
     <p>
         Kjør deretter en container av imaget på serveren, på samme måte som i tidligere oppgaver (husk å mappe portene på
         samme måte som i oppgave 3). Sjekk at containeren
-        kjører ved å gå til http://&ltserver-ip&gt/test, og se at den skriver ut lagnavnet du spesifiserte i oppgave 3.
-        Du har nå prodsatt en docker-container på en server! Var ikke det fantastiskt enkelt og praktisk?
-    </p>
-
-    <h2>Server</h2>
-    <p>
-        Se lappen du ble tildelt for informasjon om teamets tildelte server, inkludert IP, bruker og passord.
-        Dersom du ikke har fått en lapp, spør oss om en!
+        kjører ved å gå til http://&lt;server-ip&gt;/test, og se at den skriver ut lagnavnet du spesifiserte i oppgave 3.
+        Du har nå prodsatt en docker-container på en server! Var ikke det fantastiskt enkelt og praktisk? <i>/ironi -
+        det blir enklere!</i>
     </p>
 
     <h2>Nyttige lenker</h2>
     <ul>
-        <li>TODO: link til SCP/FTP</li>
         <li><a href="https://docs.docker.com/engine/reference/commandline/save/">Docker save</a></li>
         <li><a href="https://docs.docker.com/engine/reference/commandline/load/">Docker load</a></li>
     </ul>
