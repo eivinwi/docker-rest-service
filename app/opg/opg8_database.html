@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Docker Workshop - Volumes & Database</title>
+    <title>Docker Workshop - Database</title>
 
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css">
@@ -50,8 +50,28 @@
 
     <h2>a)</h2>
     <p>
-        Bruk søkekommandoen for å finne det offisielle MySQL-imaget, og kjør en container av dette imaget. Aksesser det med
-        kommandoen 'docker exec -it &ltnavn eller id&gt bash'. 
+        Bruk søkekommandoen for å finne det offisielle MySQL-imaget, og kjør en container av dette imaget. Aksesser det ved
+        å starte bash i containeren med kommandoen 'docker exec -it &ltnavn eller id&gt bash', og derfra bruke MySQL-kommandoer.
+        Opprett en database, og fyll inn litt innhold.
+    </p>
+    MySQL kommandoer:
+    <ul>
+        <li>'mysql -p' starter mysql i terminalen</li>
+        <li>CREATE DATBASE &ltdb-navn&gt</li>
+        <li>SHOW DATABASES;</li>
+        <li>USE &ltdb-navn&gt</li>
+        <li>CREATE TABLE &lttable-navn&gt </li>
+    </ul>
+
+    <h2>b)</h2>
+    <p>
+        Stop containeren og start den igjen, bruk samme kommando som i forrige oppgave og se at databasen fortsatt inneholder
+        alle de samme dataene.
+    </p>
+
+    <h2>c)</h2>
+    <p>
+
     </p>
 
     <ul>
