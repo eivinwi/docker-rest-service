@@ -79,6 +79,11 @@
         <li>Httpd</li>
     </ul>
 
+    <p>
+        For øvrig er det mulig å stoppe alle containere i en swarm med én kommando. Dersom swarm-masteren er aktiv, vil kommandoen
+        'docker ps -q' liste ut kjørende containere i hele swarm'en. Ved da å kombinere dette til 'docker stop $(docker ps -q)'
+    </p>
+
     <!--div id="fremgang">
         <h2>Fremgang</h2>
         <div id="8a" class="task">a) </div>
