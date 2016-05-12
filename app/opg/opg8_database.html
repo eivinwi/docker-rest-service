@@ -51,17 +51,19 @@
     <h2>a)</h2>
     <p>
         Bruk s&oslash;kekommandoen for &aring; finne det offisielle MySQL-imaget, og kj&oslash;r en container av dette imaget. Aksesser det ved
-        &aring; starte bash i containeren med kommandoen 'docker exec -it &lt;navn eller id&gt; bash', og derfra bruke MySQL-kommandoer.
+        &aring; starte bash i containeren med kommandoen 'docker exec -it &lt;container id&gt; bash', og derfra bruke MySQL-kommandoer.
         Opprett en database, og fyll inn litt innhold.
     </p>
-    MySQL kommandoer:
-    <ul>
-        <li>'mysql -p' starter mysql i terminalen</li>
-        <li>CREATE DATBASE &lt;db-navn&gt;</li>
-        <li>SHOW DATABASES;</li>
-        <li>USE &lt;db-navn&gt;</li>
-        <li>CREATE TABLE &lt;table-navn&gt; </li>
-    </ul>
+    <div class="alert alert-info">
+        MySQL kommandoer:
+        <ul>
+            <li>'mysql -p' starter mysql i terminalen</li>
+            <li>CREATE DATBASE &lt;db-navn&gt;</li>
+            <li>SHOW DATABASES;</li>
+            <li>USE &lt;db-navn&gt;</li>
+            <li>CREATE TABLE &lt;table-navn&gt; </li>
+        </ul>
+    </div>
 
     <h2>b)</h2>
     <p>
@@ -74,15 +76,23 @@
     <h2>c)</h2>
     <p>
         N&aring;r lokasjon ikke konfigureres oppretter MySQL imaget databasene i en standard lokasjon (/var/lib/mysql).
-        Sett isteden en selvvalgt mappe som lokasjon.
+        Sett isteden en selvvalgt mappe som lokasjon, og se at MySQL containeren oppretter de n&oslash;dvendige filene der n&aring;r
+        den kj&oslash;res.
     </p>
     <div class="alert alert-warning">
         Husk det som ble nevnt ang. docker-machine og mounting av lokale mapper som volumer
         <a href="opg7_logging.html#mounting-tips">i forrige oppgave</a>!
     </div>
 
-    <h2>d)</h2>
+
+    <br/>
+    <h2>Bonusoppgave</h2>
     <p>
+        For at en database i en container skal være nyttig må den kunne aksesseres. Det er flere måter å gjøre dette på,
+        men den enkleste er å aksessere den via ip-addressen til hosten den kjører på. Kjør en container av MySQL, og map
+        containerens MySQL-port (3306) til en port på hosten. Åpne bash på host-en, start start MySQL og lag en bruker som
+        kan aksessere databasen fra ip-er (bruk 'bruker'&'%'). Test at du kan nå databasen ved å koble på fra en terminal
+        fra din pc, med en kommando på formen 'mysql -u &ltbruker&gt -p -h &ip-en til <strong>docker-hosten</strong>&gt'.
 
     </p>
 
