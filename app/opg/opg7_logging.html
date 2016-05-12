@@ -40,19 +40,21 @@
     <h1>Oppgave 7 - Datavolumer og Logging</h1>
     <p>
         Et problem man gjerne støter på når man konverterer en eksisterende applikasjon til å kjøres i en docker-container
-        er hva man skal gjøre med log-filer. I en normal Java-applikasjon er logging relativt enkelt; velg et rammeverk
-        og sett opp en liten konfigurasjon, og log til en fil. Lokasjonen for filene kan spesifiseres fritt, og elv om
-        programmet avsluttes eller krasjer så vil log-filene i de aller fleste tilfeller være inntakte og aksesserbare.
+        er hva man skal gjøre med loggfiler. I en normal Java-applikasjon er logging relativt enkelt; velg et rammeverk
+        og sett opp en liten konfigurasjon, og logg til en fil. Lokasjonen for filene kan spesifiseres fritt, og selv om
+        programmet avsluttes eller krasjer så vil loggfilene i de aller fleste tilfeller være intakte og aksesserbare.
     </p>
     <p>
-        Når man derimot kjører programmet i en container, så vil logfilen kun finnes inne i containeren. Dette kan være
+        Når man derimot kjører programmet i en container, så vil loggfilen kun finnes inne i containeren. Dette kan være
         lite hjelpsomt dersom man for eksempel har problemer under oppstart av containeren, og det er også lite
-        praktisk når man har et stort antall containere. Heldigvis finnes det en løsning for dette. Faktisk finnes det mange
+        praktisk når man har et stort antall containere - og det er fort gjort å slette en gammel, stoppet container...
+        Heldigvis finnes det en løsning for dette. Faktisk finnes det mange
         løsninger, men den enkleste er å mounte et datavolum fra host-filsystemet, som vil være persitent selv om containeren
         avslutter, og la loggene skrives til dette volumet istedenfor det interne filsystemet i docker-containeren.
     </p>
     <div class="alert alert-info">
-        <b>Tips:</b> Containere som har blitt stoppe kan finnes med kommmandoen 'docker ps --filter "status=exited"'.
+        <b>Tips:</b> Containere som har blitt stoppet kan finnes med kommmandoen 'docker ps --filter "status=exited"'. De
+        kan også startes igjen med docker start.
     </div>
 
     <h2>a)</h2>
@@ -65,10 +67,25 @@
 
     <h2>b)</h2>
     <p>
-        Akkurat det samme kan gjøres for log-filer som skrives til av programmer. Åpne filen 'logback.xml', som inneholder
-        logging-konfigurasjonene for DockerClient, og endre pathen for loggene til mappen der du i oppgave a) mountet datavolumet.
+        Akkurat det samme kan gjøres for loggfiler som skrives til av programmer. Åpne filen 'logback.xml', som inneholder
+        loggkonfigurasjonene for DockerClient, og endre pathen for loggene til mappen der du i oppgave a) mountet datavolumet.
         Under kjøring vil docker nå skrive filene til host-filsystemet. Sjekk igjen at filene dukker opp der de forventes, og at
         programmet har klart å skrive til dem.
+    </p>
+    <div class="alert alert-info">
+        <b>NB!</b> Det kan være lurt å ha tunga rett i munnen når man kjører multiple containere i en swarm/et cluster.
+        Typisk vil man ønske å mounte samme datavolum for containere som kjører samme image, men da bør man i så fall
+        passe på at det ikke kjøres flere instanser på samme host. For om det skjer, så vil flere kilder skrive til de
+        samme loggfilene etc, hvilket fort kan bli problematisk.
+    </div>
+
+    <h2>Bonusoppgave</h2>
+    <p>
+        Dersom mange containere skal lese fra de samme filene, så anbefales det å bruke såkalte data volume containers.
+        Disse kjører typisk ingen applikasjoner, de eksisterer kun for å tilby sentrert tilgang til data volume mounts.
+        For å teste dette, kan dere sette opp en data volume container som for eksempel inneholder team.properties med en ny
+        verdi, endre workshop'ens applikasjon til å lese inn team.properties fra stien dere har plassert filen på, og kjøre
+        containeren med bruk av data volume containeren. Dere skal da kunne se at ny verdi leses inn.
     </p>
 
     <!-- div id="fremgang">
