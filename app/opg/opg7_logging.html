@@ -64,6 +64,12 @@
         når containeren startes opp, og persistere når containeren termineres! Sjekk at du finner filen der du forventer det
         med en filutforsker.
     </p>
+    <div class="alert alert-warning">
+        <b>Merk: </b> når en docker-host er satt som aktiv i docker-machine, vil lokale filbaner som parametere til 'docker run -v'
+        referere til filbanen <strong>i den aktive docker host-en.</strong> Dvs. er en host med Virtualbox som driver aktiv,
+        vil filbanen referere til mapper inne i den virtuelle maskinen. Tilsvarende for remote hosts. For å fjerne 'active'
+        kan man bruke kommandoen 'eval "$(docker-machine env -u)".
+    </div>
 
     <h2>b)</h2>
     <p>
@@ -79,13 +85,14 @@
         samme loggfilene etc, hvilket fort kan bli problematisk.
     </div>
 
+    <br/>
     <h2>Bonusoppgave</h2>
     <p>
         Dersom mange containere skal lese fra de samme filene, så anbefales det å bruke såkalte data volume containers.
         Disse kjører typisk ingen applikasjoner, de eksisterer kun for å tilby sentrert tilgang til data volume mounts.
-        For å teste dette, kan dere sette opp en data volume container som for eksempel inneholder team.properties med en ny
-        verdi, endre workshop'ens applikasjon til å lese inn team.properties fra stien dere har plassert filen på, og kjøre
-        containeren med bruk av data volume containeren. Dere skal da kunne se at ny verdi leses inn.
+        For å teste dette, kan dere sette opp en data volume container som for eksempel inneholder filen team.properties med en ny
+        verdi. Endre så workshopens applikasjon til å lese inn team.properties fra stien dere har plassert filen på, og kjør
+        containeren slik at den bruker den nye data volume containeren. Dere skal da kunne se at ny verdi leses inn.
     </p>
 
     <!-- div id="fremgang">
