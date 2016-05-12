@@ -45,13 +45,13 @@
 <div class="container">
     <h1>Oppgave 3 - Dockerize</h1>
     <p>
-        Neste steg er å kunne lage og kjøre docker-containere som inneholder egenproduserte applikasjoner. Dette vil for
-        mange være den mest interessante problemstillingen; hvordan man kan ta en eksisterende applikasjon og konvertere
-        den til å kjøre i en docker-container.
+        Neste steg er &aring; kunne lage og kj&oslash;re docker-containere som inneholder egenproduserte applikasjoner. Dette vil for
+        mange v&aelig;re den mest interessante problemstillingen; hvordan man kan ta en eksisterende applikasjon og konvertere
+        den til &aring; kj&oslash;re i en docker-container.
 
 
-        Oppgaven er her å bygge og kjøre applikasjonen DockerClient i en Docker container.
-        Denne containeren skal legge til JAR-filen som lages av Maven, og kjøre denne jar-filen
+        Oppgaven er her &aring; bygge og kj&oslash;re applikasjonen DockerClient i en Docker container.
+        Denne containeren skal legge til JAR-filen som lages av Maven, og kj&oslash;re denne jar-filen
         ved oppstart av containeren.
     </p>
 
@@ -60,53 +60,53 @@
         I denne oppgaven tar vi utgangspunkt i workshoppens minimale Java-applikasjon DockerClient, som er konfigurert
         med maven i pom.xml. Denne applikasjonene kan bygges med kommandoen 'mvn clean install', som lager en JAR-fil.
 
-        Sett først et selvvalgt teamnavn i filen team.properties. Dette er for at du skal kunne kjenne igjen din applikasjon
-        senere, uansett hvor den kjører. Bygg deretter applikasjonen og kjør den med 'java -jar &lt;path-til-JAR&gt;'. Gå til
+        Sett f&oslash;rst et selvvalgt teamnavn i filen team.properties. Dette er for at du skal kunne kjenne igjen din applikasjon
+        senere, uansett hvor den kj&oslash;rer. Bygg deretter applikasjonen og kj&oslash;r den med 'java -jar &lt;path-til-JAR&gt;'. G&aring; til
         <a href="http://localhost:8080/test">http://localhost:8080/test</a> i en nettleser
-        og se applikasjonen er oppe og kjører og at lagnavn har blitt satt. Stopp applikasjonen før oppgave b).
+        og se applikasjonen er oppe og kj&oslash;rer og at lagnavn har blitt satt. Stopp applikasjonen f&oslash;r oppgave b).
     </p>
     <p class="alert alert-danger">
-        <b>NB:</b> om noe allerede kjører på port 8080 må en annen port spesifiseres.
+        <b>NB:</b> om noe allerede kj&oslash;rer p&aring; port 8080 m&aring; en annen port spesifiseres.
     </p>
 
     <h2>b)</h2>
     <p>
-        Det er flere måter å lage Docker-images som kjører applikasjoner på, der den aller enkleste metoden er å simpelthen
+        Det er flere m&aring;ter &aring; lage Docker-images som kj&oslash;rer applikasjoner p&aring;, der den aller enkleste metoden er &aring; simpelthen
         legge en allerede bygget applikasjon til under byggingen av imaget. Kopier JAR-filen fra target-mappen inn i
         mappen 'oppgave_3'. Endre Dockerfile slike at den legger til JAR-filen som ble bygget i oppgave a,
-        og eksekverer jar-filen ved oppstart. Bygg og kjør så docker containeren. I denne omgangen skal vi bare se at containeren
+        og eksekverer jar-filen ved oppstart. Bygg og kj&oslash;r s&aring; docker containeren. I denne omgangen skal vi bare se at containeren
         og applikasjonen starter opp.
     </p>
     <h3>Hint</h3>
     <p>
-        Mens RUN kun brukes under bygging av image, kan både CMD og ENTRYPOINT brukes for å eksekvere kommandoer under kjøring
-        av en container. Forskjellen på disse dersom man kun skal kjøre en kommando er ikke åpenbar, men mens man kan ha
-        så mange CMDs man vil, kan man kun ha ett Entrypoint. For containere som er ment å fungere som en executable er
-        det fordelaktig å bruke Entrypoint.
+        Mens RUN kun brukes under bygging av image, kan b&aring;de CMD og ENTRYPOINT brukes for &aring; eksekvere kommandoer under kj&oslash;ring
+        av en container. Forskjellen p&aring; disse dersom man kun skal kj&oslash;re en kommando er ikke &aring;penbar, men mens man kan ha
+        s&aring; mange CMDs man vil, kan man kun ha ett Entrypoint. For containere som er ment &aring; fungere som en executable er
+        det fordelaktig &aring; bruke Entrypoint.
     </p>
     <!-- TODO: link cmd/entrypoint -->
 
     <h2>c)</h2>
     <p>
-        For å kunne aksessere containeren i nettleser må containerens interne porter mappes til faktiske porter på den
-        lokale maskinen. Dette defineres med parameterene når man kjører containeren. Kjør containeren på nytt, men publiser
-        denne gangen Docker-containerens port 8080 som localhosts port 8080. Verifiser at dette har fungert ved å åpne
+        For &aring; kunne aksessere containeren i nettleser m&aring; containerens interne porter mappes til faktiske porter p&aring; den
+        lokale maskinen. Dette defineres med parameterene n&aring;r man kj&oslash;rer containeren. Kj&oslash;r containeren p&aring; nytt, men publiser
+        denne gangen Docker-containerens port 8080 som localhosts port 8080. Verifiser at dette har fungert ved &aring; &aring;pne
         <a href="http://localhost:8080/test">http://localhost:8080/test</a>.
     </p>
     <!-- TODO: vil localhost fungere? -->
 
     <h2>d)</h2>
     <p>
-        Istedenfor å manuelt kopiere JAR-fil og bygge docker imaget på nytt hver gang Maven har kjørt, kan vi få Maven til
-        å bygge det automatisk. Pluginen maven-docker-plugin er allerede lagt til i pom.xml, det eneste som mangler er å konfigurere
-        den med korrekt path til Dockerfilen for denne oppgaven, og å sette navn på imaget som skal lages!
+        Istedenfor &aring; manuelt kopiere JAR-fil og bygge docker imaget p&aring; nytt hver gang Maven har kj&oslash;rt, kan vi f&aring; Maven til
+        &aring; bygge det automatisk. Pluginen maven-docker-plugin er allerede lagt til i pom.xml, det eneste som mangler er &aring; konfigurere
+        den med korrekt path til Dockerfilen for denne oppgaven, og &aring; sette navn p&aring; imaget som skal lages!
         Image-navn og path til hvilken Dockerfile som brukes i byggingen spesifiseres i plugin-konfigurasjonen av maven-docker-plugin
         i pom.xml (konfigurasjonen er allerede fyllt inn for Oppgave 3).
         Bygg imaget med kommandoen 'mvn clean package docker:build', og se at imaget med navn spesifisert i pom.xml
-        dukker opp i Docker-miljøet (sjekkes med kommandoen 'docker images').
+        dukker opp i Docker-milj&oslash;et (sjekkes med kommandoen 'docker images').
     </p>
     <div class="alert alert-warning">
-        NB: noen har hatt problemer med at Tomcat bruker lang tid på å starte opp. Det kan da hjelpe å legge til
+        NB: noen har hatt problemer med at Tomcat bruker lang tid p&aring; &aring; starte opp. Det kan da hjelpe &aring; legge til
         '-Djava.security.egd=file:/dev/./urandom' som parameter til Java.
     </div>
 

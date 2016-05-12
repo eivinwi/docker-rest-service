@@ -38,20 +38,20 @@
 <div class="container">
     <h1>Oppgave 8 - Databaser</h1>
     <p>
-        Det finnes ferdige images for databaser, og Docker Hub innneholder versjoner for de fleste populære dialekter
-        som MySQL, PostgreSQL og MongoDB etc. Om ingen av imagene på Hub passer ens spesifikasjoner, eller man av andre
-        grunner ikke ønsker å bruke de offisielle imagene er det også fint mulig å lage dem selv. To eksempler
-        på dette er lenket under.
+        Det finnes ferdige images for databaser, og Docker Hub innneholder versjoner for de fleste popul&aelig;re dialekter
+        som MySQL, PostgreSQL og MongoDB etc. Om ingen av imagene p&aring; Hub passer ens spesifikasjoner, eller man av andre
+        grunner ikke &oslash;nsker &aring; bruke de offisielle imagene er det ogs&aring; fint mulig &aring; lage dem selv. To eksempler
+        p&aring; dette er lenket under.
     </p>
     <p>
-        For større systemer kan det lønne seg å benytte mer avanserte løsninger for data-volume managment i docker som f.eks
+        For st&oslash;rre systemer kan det l&oslash;nne seg &aring; benytte mer avanserte l&oslash;sninger for data-volume managment i docker som f.eks
         <a href="https://clusterhq.com/flocker/introduction/">Flocker</a>.
     </p>
 
     <h2>a)</h2>
     <p>
-        Bruk søkekommandoen for å finne det offisielle MySQL-imaget, og kjør en container av dette imaget. Aksesser det ved
-        å starte bash i containeren med kommandoen 'docker exec -it &lt;navn eller id&gt; bash', og derfra bruke MySQL-kommandoer.
+        Bruk s&oslash;kekommandoen for &aring; finne det offisielle MySQL-imaget, og kj&oslash;r en container av dette imaget. Aksesser det ved
+        &aring; starte bash i containeren med kommandoen 'docker exec -it &lt;navn eller id&gt; bash', og derfra bruke MySQL-kommandoer.
         Opprett en database, og fyll inn litt innhold.
     </p>
     MySQL kommandoer:
@@ -65,15 +65,15 @@
 
     <h2>b)</h2>
     <p>
-        Docker-containere som kjører databaser er 'data volume containers'. Disse containerene eksponerer det lokale filsystemet,
-        og gjør det tilgjengelig for andre containere. Det betyr at selv om en container stoppes (og også om den slettes),
-        vil selve databasen fortsatt være inntakt. Stop containeren og start den igjen, bruk samme kommandoer som i forrige oppgave
-        for å se at databasen fortsatt inneholder alle de samme dataene.
+        Docker-containere som kj&oslash;rer databaser er 'data volume containers'. Disse containerene eksponerer det lokale filsystemet,
+        og gj&oslash;r det tilgjengelig for andre containere. Det betyr at selv om en container stoppes (og ogs&aring; om den slettes),
+        vil selve databasen fortsatt v&aelig;re inntakt. Stop containeren og start den igjen, bruk samme kommandoer som i forrige oppgave
+        for &aring; se at databasen fortsatt inneholder alle de samme dataene.
     </p>
 
     <h2>c)</h2>
     <p>
-        Når lokasjon ikke konfigureres oppretter MySQL imaget databasene i en standard lokasjon (/var/lib/mysql).
+        N&aring;r lokasjon ikke konfigureres oppretter MySQL imaget databasene i en standard lokasjon (/var/lib/mysql).
         Sett isteden en selvvalgt mappe som lokasjon.
     </p>
 

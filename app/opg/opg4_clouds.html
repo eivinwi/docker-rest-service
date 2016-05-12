@@ -39,10 +39,10 @@
     <h1>Oppgave 4 - To the Clouds!</h1>
     <p>
         Som nevnt i introen er en av fordelen med Docker containers er at de er "self-contained", at de har med seg alle
-        avhengigheter som trengs for å kjøre applikasjonen. Containere kan derfor (i teorien) kjøres overalt hvor
-        docker er installert. Dette gjør programmer bygget på Docker ekstremt portable. Når man har bygget et Docker image eksisterer det i det lokale docker-miljøet. Dersom man vil ha imaget på en fil
-        kan man benytte Dockers save-kommando. Dette kan for eksempel være nyttig for å flytte imaget fra en maskin til en annen,
-        eller for å deploye til en server.
+        avhengigheter som trengs for &aring; kj&oslash;re applikasjonen. Containere kan derfor (i teorien) kj&oslash;res overalt hvor
+        docker er installert. Dette gj&oslash;r programmer bygget p&aring; Docker ekstremt portable. N&aring;r man har bygget et Docker image eksisterer det i det lokale docker-milj&oslash;et. Dersom man vil ha imaget p&aring; en fil
+        kan man benytte Dockers save-kommando. Dette kan for eksempel v&aelig;re nyttig for &aring; flytte imaget fra en maskin til en annen,
+        eller for &aring; deploye til en server.
     </p>
 
 
@@ -53,29 +53,29 @@
 
     <h2>b)</h2>
     <p>
-        Overfør denne filen til din utdelte Digital Ocean-server (be om en egen IP hvis du ikke allerede har fått en).
-        Alle servere har en bruker root, som kan autentiseres med <a href="../workshop.ppk">SSH-nøkkel</a>. Lagre filen
-        lokalt, og last den inn i SSH. For å gjøre det, så kan det være nødvendig først å kjøre kommandoen
-        'eval "$(ssh-agent -s)"'. Selve innlastingen skjer så med kommandoen 'ssh-add &lt;nøkkel&gt;'. Merk at på
-        Windows og Mac har man SSH tilgjengelig i Docker Quickstart Terminal, der man også kjører alle docker-kommandoer.
-        Filoverføringen kan gjøres med SCP, med følgende kommando: 'scp &lt;lagret image-fil&gt; root@&lt;server-ip&gt;:.'.
+        Overf&oslash;r denne filen til din utdelte Digital Ocean-server (be om en egen IP hvis du ikke allerede har f&aring;tt en).
+        Alle servere har en bruker root, som kan autentiseres med <a href="../workshop.ppk">SSH-n&oslash;kkel</a>. Lagre filen
+        lokalt, og last den inn i SSH. For &aring; gj&oslash;re det, s&aring; kan det v&aelig;re n&oslash;dvendig f&oslash;rst &aring; kj&oslash;re kommandoen
+        'eval "$(ssh-agent -s)"'. Selve innlastingen skjer s&aring; med kommandoen 'ssh-add &lt;n&oslash;kkel&gt;'. Merk at p&aring;
+        Windows og Mac har man SSH tilgjengelig i Docker Quickstart Terminal, der man ogs&aring; kj&oslash;rer alle docker-kommandoer.
+        Filoverf&oslash;ringen kan gj&oslash;res med SCP, med f&oslash;lgende kommando: 'scp &lt;lagret image-fil&gt; root@&lt;server-ip&gt;:.'.
     </p>
 
     <h2>c)</h2>
     <p>
-        SSH deg inn på serveren og last imaget inn i Docker-miljøet. NB: Her har vi vært snille og installert Docker for
-        dere. Dette vil dere i andre sammenhenger selv måtte sørge for er på plass.
+        SSH deg inn p&aring; serveren og last imaget inn i Docker-milj&oslash;et. NB: Her har vi v&aelig;rt snille og installert Docker for
+        dere. Dette vil dere i andre sammenhenger selv m&aring;tte s&oslash;rge for er p&aring; plass.
     </p>
     <p>
-        Har man sørget for å laste inn privat nøkkel fra b), så kan man logge seg på slik: 'ssh root@&lt;server-ip&gt;'.
+        Har man s&oslash;rget for &aring; laste inn privat n&oslash;kkel fra b), s&aring; kan man logge seg p&aring; slik: 'ssh root@&lt;server-ip&gt;'.
     </p>
 
     <h2>d)</h2>
     <p>
-        Kjør deretter en container av imaget på serveren, på samme måte som i tidligere oppgaver (husk å mappe portene på
-        samme måte som i oppgave 3). Sjekk at containeren
-        kjører ved å gå til http://&lt;server-ip&gt;:8080/test, og se at den skriver ut lagnavnet du spesifiserte i oppgave 3.
-        Du har nå prodsatt en docker-container på en server! Var ikke det fantastiskt enkelt og praktisk? <i>/ironi -
+        Kj&oslash;r deretter en container av imaget p&aring; serveren, p&aring; samme m&aring;te som i tidligere oppgaver (husk &aring; mappe portene p&aring;
+        samme m&aring;te som i oppgave 3). Sjekk at containeren
+        kj&oslash;rer ved &aring; g&aring; til http://&lt;server-ip&gt;:8080/test, og se at den skriver ut lagnavnet du spesifiserte i oppgave 3.
+        Du har n&aring; prodsatt en docker-container p&aring; en server! Var ikke det fantastiskt enkelt og praktisk? <i>/ironi -
         det blir enklere!</i>
     </p>
 

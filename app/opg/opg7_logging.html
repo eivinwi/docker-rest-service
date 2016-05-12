@@ -39,59 +39,61 @@
 <div class="container">
     <h1>Oppgave 7 - Datavolumer og Logging</h1>
     <p>
-        Et problem man gjerne støter på når man konverterer en eksisterende applikasjon til å kjøres i en docker-container
-        er hva man skal gjøre med loggfiler. I en normal Java-applikasjon er logging relativt enkelt; velg et rammeverk
+        Et problem man gjerne st&oslash;ter p&aring; n&aring;r man konverterer en eksisterende applikasjon til &aring; kj&oslash;res i en docker-container
+        er hva man skal gj&oslash;re med loggfiler. I en normal Java-applikasjon er logging relativt enkelt; velg et rammeverk
         og sett opp en liten konfigurasjon, og logg til en fil. Lokasjonen for filene kan spesifiseres fritt, og selv om
-        programmet avsluttes eller krasjer så vil loggfilene i de aller fleste tilfeller være intakte og aksesserbare.
+        programmet avsluttes eller krasjer s&aring; vil loggfilene i de aller fleste tilfeller v&aelig;re intakte og aksesserbare.
     </p>
     <p>
-        Når man derimot kjører programmet i en container, så vil loggfilen kun finnes inne i containeren. Dette kan være
-        lite hjelpsomt dersom man for eksempel har problemer under oppstart av containeren, og det er også lite
-        praktisk når man har et stort antall containere - og det er fort gjort å slette en gammel, stoppet container...
-        Heldigvis finnes det en løsning for dette. Faktisk finnes det mange
-        løsninger, men den enkleste er å mounte et datavolum fra host-filsystemet, som vil være persitent selv om containeren
+        N&aring;r man derimot kj&oslash;rer programmet i en container, s&aring; vil loggfilen kun finnes inne i containeren. Dette kan v&aelig;re
+        lite hjelpsomt dersom man for eksempel har problemer under oppstart av containeren, og det er ogs&aring; lite
+        praktisk n&aring;r man har et stort antall containere - og det er fort gjort &aring; slette en gammel, stoppet container...
+        Heldigvis finnes det en l&oslash;sning for dette. Faktisk finnes det mange
+        l&oslash;sninger, men den enkleste er &aring; mounte et datavolum fra host-filsystemet, som vil v&aelig;re persitent selv om containeren
         avslutter, og la loggene skrives til dette volumet istedenfor det interne filsystemet i docker-containeren.
     </p>
     <div class="alert alert-info">
         <b>Tips:</b> Containere som har blitt stoppet kan finnes med kommmandoen 'docker ps --filter "status=exited"'. De
-        kan også startes igjen med docker start.
+        kan ogs&aring; startes igjen med docker start.
     </div>
 
     <h2>a)</h2>
     <p>
         Mount en mappe fra det lokale filsystemet til en mappe i docker-containeren, og la docker-containeren bruke
-        linux-kommandoen 'touch' for å opprette en fil der når den starter opp. Filen skal da dukke opp i host-filsystemet
-        når containeren startes opp, og persistere når containeren termineres! Sjekk at du finner filen der du forventer det
+        linux-kommandoen 'touch' for &aring; opprette en fil der n&aring;r den starter opp. Filen skal da dukke opp i host-filsystemet
+        n&aring;r containeren startes opp, og persistere n&aring;r containeren termineres! Sjekk at du finner filen der du forventer det
         med en filutforsker.
     </p>
     <div class="alert alert-warning">
-        <b>Merk: </b> når en docker-host er satt som aktiv i docker-machine, vil lokale filbaner som parametere til 'docker run -v'
-        referere til filbanen <strong>i den aktive docker host-en.</strong> Dvs. er en host med Virtualbox som driver aktiv,
-        vil filbanen referere til mapper inne i den virtuelle maskinen. Tilsvarende for remote hosts. For å fjerne 'active'
-        kan man bruke kommandoen 'eval "$(docker-machine env -u)".
+        <b>Merk: </b> n&aring;r en lokal docker-host er satt som aktiv i docker-machine, vil lokale filbaner som parametere til 'docker run -v'
+        referere til filbanen i den aktive docker host-en, <strong>med unntak av hjemmekatalogen</strong>. Dette er fordi
+        Docker-machine p&aring; Mac/Windows alltid fors&oslash;ker &aring; mounte henholdsvis /Users /c/Users, slik at de blir tilgjengelige lokalt p&aring; host-en.
+        P&aring; Linux gj&oslash;res ikke dette, men til gjengjeld kan man her bruke Docker uten en docker-machine som mellommann. Dette
+        gj&oslash;res ved &aring; ikke sette noen machines som aktive ('eval "$(docker-machine env -u)"'). Om volumer skal mountes p&aring;
+        remote hosts m&aring; filene enten kopieres, eller man m&aring; bruke en data volume container.
     </div>
 
     <h2>b)</h2>
     <p>
-        Akkurat det samme kan gjøres for loggfiler som skrives til av programmer. Åpne filen 'logback.xml', som inneholder
+        Akkurat det samme kan gj&oslash;res for loggfiler som skrives til av programmer. &aring;pne filen 'logback.xml', som inneholder
         loggkonfigurasjonene for DockerClient, og endre pathen for loggene til mappen der du i oppgave a) mountet datavolumet.
-        Under kjøring vil docker nå skrive filene til host-filsystemet. Sjekk igjen at filene dukker opp der de forventes, og at
-        programmet har klart å skrive til dem.
+        Under kj&oslash;ring vil docker n&aring; skrive filene til host-filsystemet. Sjekk igjen at filene dukker opp der de forventes, og at
+        programmet har klart &aring; skrive til dem.
     </p>
     <div class="alert alert-info">
-        <b>NB!</b> Det kan være lurt å ha tunga rett i munnen når man kjører multiple containere i en swarm/et cluster.
-        Typisk vil man ønske å mounte samme datavolum for containere som kjører samme image, men da bør man i så fall
-        passe på at det ikke kjøres flere instanser på samme host. For om det skjer, så vil flere kilder skrive til de
+        <b>NB!</b> Det kan v&aerlig;re lurt &aring; ha tunga rett i munnen n&aring;r man kj&oslash;rer multiple containere i en swarm/et cluster.
+        Typisk vil man &oslash;nske &aring; mounte samme datavolum for containere som kj&oslash;rer samme image, men da b&oslash;r man i s&aring; fall
+        passe p&aring; at det ikke kj&oslash;res flere instanser p&aring; samme host. For om det skjer, s&aring; vil flere kilder skrive til de
         samme loggfilene etc, hvilket fort kan bli problematisk.
     </div>
 
     <br/>
     <h2>Bonusoppgave</h2>
     <p>
-        Dersom mange containere skal lese fra de samme filene, så anbefales det å bruke såkalte data volume containers.
-        Disse kjører typisk ingen applikasjoner, de eksisterer kun for å tilby sentrert tilgang til data volume mounts.
-        For å teste dette, kan dere sette opp en data volume container som for eksempel inneholder filen team.properties med en ny
-        verdi. Endre så workshopens applikasjon til å lese inn team.properties fra stien dere har plassert filen på, og kjør
+        Dersom mange containere skal lese fra de samme filene, s&aring; anbefales det &aring; bruke s&aring;kalte data volume containers.
+        Disse kj&oslash;rer typisk ingen applikasjoner, de eksisterer kun for &aring; tilby sentrert tilgang til data volume mounts.
+        For &aring; teste dette, kan dere sette opp en data volume container som for eksempel inneholder filen team.properties med en ny
+        verdi. Endre s&aring; workshopens applikasjon til &aring; lese inn team.properties fra stien dere har plassert filen p&aring;, og kj&oslash;r
         containeren slik at den bruker den nye data volume containeren. Dere skal da kunne se at ny verdi leses inn.
     </p>
 

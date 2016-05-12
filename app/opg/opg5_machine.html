@@ -46,83 +46,83 @@
 <div class="container">
     <h1>Oppgave 5 - Docker Machine</h1>
     <p class="alert alert-info">
-        <b>NB:</b> det er fullt lovlig å starte på denne oppgaven når man vil, men planen er å ta en liten pause når flere nærmer seg
-        dette punktet, for å ta en liten forklaring av Docker-Machine, hva det er og hvordan det brukes. Har du kommet hit tidlig,
-        så begynn gjerne med å se på lenkene under.
+        <b>NB:</b> det er fullt lovlig &aring; starte p&aring; denne oppgaven n&aring;r man vil, men planen er &aring; ta en liten pause n&aring;r flere n&aelig;rmer seg
+        dette punktet, for &aring; ta en liten forklaring; av Docker-Machine, hva det er og hvordan det brukes. Har du kommet hit tidlig,
+        s&aring; begynn gjerne med &aring; se p&aring; lenkene under.
     </p>
 
     <p>
-        Som vi så i forrige oppgave er docker-apper fine og portable, men å lagre til fil og flytte de rundt manuelt
-        er hverken smidig eller praktisk, og skalerer dårlig til større systemer. Docker-Machine kan brukes for å
-        forenkle distribusjonen av docker-images til lokale og eksterne maskiner, og også til å automatisere oppsett av servere.
+        Som vi s&aring; i forrige oppgave er docker-apper fine og portable, men &aring; lagre til fil og flytte de rundt manuelt
+        er hverken smidig eller praktisk, og skalerer d&aring;rlig til st&oslash;rre systemer. Docker-Machine kan brukes for &aring;
+        forenkle distribusjonen av docker-images til lokale og eksterne maskiner, og ogs&aring; til &aring; automatisere oppsett av servere.
     </p>
 
     <h2>a)</h2>
     <p>
-        Bruk Docker-Machine for å lage en virtuell lokal maskin med driveren virtualbox. Dette betyr at du oppretter en Docker
-        host for kjøring av Docker containere i en Virtualbox virtuell maskin. Dette kan virke som et litt merkelig konsept,
-        men er nyttig for å kunne teste deployment lokalt på samme måte som remote.
+        Bruk Docker-Machine for &aring; lage en virtuell lokal maskin med driveren virtualbox. Dette betyr at du oppretter en Docker
+        host for kj&oslash;ring av Docker containere i en Virtualbox virtuell maskin. Dette kan virke som et litt merkelig konsept,
+        men er nyttig for &aring; kunne teste deployment lokalt p&aring; samme m&aring;te som remote.
     </p>
     <div class="alert alert-info">
-        <b>Tips:</b> en oversikt over tilgjengelige docker-machines (både lokalt og remote) kan finnes med kommandoen 'docker-machine ls'.
+        <b>Tips:</b> en oversikt over tilgjengelige docker-machines (b&aring;de lokalt og remote) kan finnes med kommandoen 'docker-machine ls'.
         'docker info &lt;machine-navn&gt;' viser informasjon om den angitte maskinen.
     </div>
 
     <h2>b)</h2>
     <p>
-        Docker-machine støtter de fleste store hosting-leverandører, og de som ikke støttes direkte kan fortsatt settes
+        Docker-machine st&oslash;tter de fleste store hosting-leverand&oslash;rer, og de som ikke st&oslash;ttes direkte kan fortsatt settes
         opp manuelt, med noen ekstra steg. Distribusjon av containere blir kraftig forenklet, og man trenger faktisk kun <b>én</b> kommando i docker-machine
-        for å gjøre følgende, helt automagisk:
+        for &aring; gj&oslash;re f&oslash;lgende, helt automagisk:
     </p>
         <ul>
             <li>Starte opp en ny server</li>
-            <li>Installere og konfigurere Docker Engine på serveren</li>
+            <li>Installere og konfigurere Docker Engine p&aring; serveren</li>
             <li>Legge inn serveren som en maskin i Docker-Machine</li>
             <li>Sette opp SSH, inkl generering og importering av keypair</li>
         </ul>
     <p>
-        Bruk docker-machines 'create' kommando for å starte opp en DigitalOcean-server ved å bruke API-nøkkelen lenger ned på siden her.
-        Bruk teamnavnet deres som navn på maskinen (uten eventuelle mellomrom og spesial-tegn). Bekreft at serveren har
-        blitt opprettet og lagt til ved å sjekke 'docker-machine ls'.
+        Bruk docker-machines 'create' kommando for &aring; starte opp en DigitalOcean-server ved &aring; bruke API-n&oslash;kkelen lenger ned p&aring; siden her.
+        Bruk teamnavnet deres som navn p&aring; maskinen (uten eventuelle mellomrom og spesial-tegn). Bekreft at serveren har
+        blitt opprettet og lagt til ved &aring; sjekke 'docker-machine ls'.
     </p>
 
     <h2>c)</h2>
     <p>
-        Docker-kommandoer blir eksekvert på maskinen som er satt som 'active' i docker-machine, pass på at serveren laget
+        Docker-kommandoer blir eksekvert p&aring; maskinen som er satt som 'active' i docker-machine, pass p&aring; at serveren laget
         i oppgave b) er markert som 'active' (se 'docker-machine ls'). Hvilken maskin som er aktiv blir satt i enviroment-variable,
-        som kan genereres med 'docker-machine env &lt;maskin-navn&gt;'. For å faktisk sette dette til enviroment-variablene
+        som kan genereres med 'docker-machine env &lt;maskin-navn&gt;'. For &aring; faktisk sette dette til enviroment-variablene
         brukes kommandoen 'eval "$(docker-machine env &lt;maskin-navn&gt;)"'.
     </p>
     <p>
-        På den nyopprettede maskinen, som du nå har satt til aktiv, skal du kjøre samme container som i oppgave 3. Men,
-        i utgangspunktet er den nyopprettede maskinen tom. Hvis du nå kjører 'docker images', så skal listen være tom.
-        Det er mange muligheter for å få lastet images til maskinen, og om du vil kan du gjenbruke løsningene fra
-        oppgave 3 (bygge image på nytt) eller oppgave 4 (save, load).
+        P&aring; den nyopprettede maskinen, som du n&aring; har satt til aktiv, skal du kj&oslash;re samme container som i oppgave 3. Men,
+        i utgangspunktet er den nyopprettede maskinen tom. Hvis du n&aring; kj&oslash;rer 'docker images', s&aring; skal listen v&aelig;re tom.
+        Det er mange muligheter for &aring; f&aring; lastet images til maskinen, og om du vil kan du gjenbruke l&oslash;sningene fra
+        oppgave 3 (bygge image p&aring; nytt) eller oppgave 4 (save, load).
     </p>
     <p>
-        Når containeren kjører, bruk docker-machine til å finne ip-en til den nyopprettede maskinen, og besøk
-        http://&lt;ip&gt;:8080/test den i nettleseren for å verifisere at containeren kjører. (Husk portmapping)
+        N&aring;r containeren kj&oslash;rer, bruk docker-machine til &aring; finne ip-en til den nyopprettede maskinen, og bes&oslash;k
+        http://&lt;ip&gt;:8080/test den i nettleseren for &aring; verifisere at containeren kj&oslash;rer. (Husk portmapping)
     </p>
     <div class="alert alert-info">
-        <b>Tips:</b> I utgangspunktet, før man har begynte å lage docker-maskiner, så er man i maskinen 'default'. Dersom man
+        <b>Tips:</b> I utgangspunktet, f&oslash;r man har begynte &aring; lage docker-maskiner, s&aring; er man i maskinen 'default'. Dersom man
         vil tilbake til denne bruker man eval-kommandoen nevnt over, med maskin-navn 'default' som parameter.
     </div>
 
     <h2>d)</h2>
     <p>
-        Bruk docker-machines innebygde ssh-kommando for å logge inn på maskinen - merk at du nå er logget inn på en virtuell
-        maskin på en server hos Digital Ocean! Logget inn på docker-maskinen kan man bruke samme docker-kommandoer som lokalt.
-        Bruk dette for å observere at docker-containeren kjører. Prøv f.eks 'docker images', 'docker ps', 'docker stop &lt;container-id&gt;'
+        Bruk docker-machines innebygde ssh-kommando for &aring; logge inn p&aring; maskinen - merk at du n&aring; er logget inn p&aring; en virtuell
+        maskin p&aring; en server hos Digital Ocean! Logget inn p&aring; docker-maskinen kan man bruke samme docker-kommandoer som lokalt.
+        Bruk dette for &aring; observere at docker-containeren kj&oslash;rer. Pr&oslash;v f.eks 'docker images', 'docker ps', 'docker stop &lt;container-id&gt;'
         og 'docker start &lt;container-id&gt;'.
     </p>
     <p>
-        Som nevnt i b), maskiner opprettet av docker-machine vil alltid være klargjort med Docker Engine, slik at du her
-        faktisk ikke trenger å tenke på manuell installasjon av Docker.
+        Som nevnt i b), maskiner opprettet av docker-machine vil alltid v&aelig;re klargjort med Docker Engine, slik at du her
+        faktisk ikke trenger &aring; tenke p&aring; manuell installasjon av Docker.
     </p>
     <div class="alert alert-warning">
-        <b>NB:</b> å aksessere docker host laget av andre krever at man har samme private-key som ble brukt i opprettingen av host-en,
-        og er derfor ikke helt rett frem. Dersom man likvel ønsker å forsøke dette kan det gjøres ved å spesifisere private key
-        når hosten opprettes, og andre på teamet kan da importere host-ene
+        <b>NB:</b> &aring; aksessere docker host laget av andre krever at man har samme private-key som ble brukt i opprettingen av host-en,
+        og er derfor ikke helt rett frem. Dersom man likvel &oslash;nsker &aring; fors&oslash;ke dette kan det gj&oslash;res ved &aring; spesifisere private key
+        n&aring;r hosten opprettes, og andre p&aring; teamet kan da importere host-ene
         <a href="https://docs.docker.com/machine/drivers/generic/" class="alert-link">som beskrevet her</a>.
     </div>
 
@@ -135,15 +135,15 @@
 
     <h2>Digital Ocean API-key</h2>
     <p>
-        Også kalt access-token:
+        Ogs&aring; kalt access-token:
     </p>
     <p>
         bd6f5a35008ff90999251cbbe024273aee929fafed2519b00fefddba51dc0ef5
     </p>
     <p class="alert alert-danger">
-        <b>NB:</b> For å sitere Linux' sudo-kommando: "With great power comes great responsibility.". Vi gir her fritt ut API-nøkkelen
-        til en Digital Ocean konto som i denne workshoppen vil bli delt av alle. Selv om mye morsomt kan gjøres med den,
-        så husk på at dersom noen går berserk med denne blir vi nødt til å revoke nøkkelen, og dermed ødelegge moroa for alle andre.
+        <b>NB:</b> For &aring; sitere Linux' sudo-kommando: "With great power comes great responsibility.". Vi gir her fritt ut API-n&oslash;kkelen
+        til en Digital Ocean konto som i denne workshoppen vil bli delt av alle. Selv om mye morsomt kan gj&oslash;res med den,
+        s&aring; husk p&aring; at dersom noen g&aring;r berserk med denne blir vi n&oslash;dt til &aring; revoke n&oslash;kkelen, og dermed &oslash;delegge moroa for alle andre.
     </p>
 
     <h2>Nyttige lenker</h2>

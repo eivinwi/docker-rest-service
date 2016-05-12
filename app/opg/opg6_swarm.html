@@ -40,38 +40,38 @@
     <p>
         En Docker Swarm er et cluster av docker-machines, der <b>noder</b> blir styrt av en eller flere <b>Swarm manager(e)</b>.
         Dette er en form for abstraksjon, og sett utenfra er en swarm manager ekvivalent med en normal docker machine. Forskjellen
-        er at manageren automatisk kan fordele containere på de nodene som til enhver tid har mest ledig kapasitet, og gjør
-        det lettere å skalere etter behov. En swarm kan enkelt utvides med flere noder når man trenger mer ytelse.
+        er at manageren automatisk kan fordele containere p&aring; de nodene som til enhver tid har mest ledig kapasitet, og gj&oslash;r
+        det lettere &aring; skalere etter behov. En swarm kan enkelt utvides med flere noder n&aring;r man trenger mer ytelse.
     </p>
 
     <h2>a)</h2>
     <p>
-        Bruk docker-machine til å lage en Swarm med minst 3 noder og en Swarm Manager. For å sette en swarm-maskin som aktiv
-        brukes kommandoen 'eval "$(docker-machine env --swarm &lt;navn-på-maskin&gt;)"'.
-        Sett swarm-manageren som aktiv, og bruk deretter "docker info" for å se dens status, med bl.a. hvor mange noder den inneholder,
-        nodenes IP, hvor mange containere hver node kjører osv.
+        Bruk docker-machine til &aring; lage en Swarm med minst 3 noder og en Swarm Manager. For &aring; sette en swarm-maskin som aktiv
+        brukes kommandoen 'eval "$(docker-machine env --swarm &lt;navn-p&aring;-maskin&gt;)"'.
+        Sett swarm-manageren som aktiv, og bruk deretter "docker info" for &aring; se dens status, med bl.a. hvor mange noder den inneholder,
+        nodenes IP, hvor mange containere hver node kj&oslash;rer osv.
     </p>
     <div class="alert alert-info">
-        <b>NB:</b> Noter ned Swarm-tokenen etter at den har blitt generert, ettersom den trengs for å interagere med swarmen.
-        Denne token-en kan også finnes ved å kjøre 'docker info' med swarm-masteren satt som aktiv i Docker Machine.
+        <b>NB:</b> Noter ned Swarm-tokenen etter at den har blitt generert, ettersom den trengs for &aring; interagere med swarmen.
+        Denne token-en kan ogs&aring; finnes ved &aring; kj&oslash;re 'docker info' med swarm-masteren satt som aktiv i Docker Machine.
     </div>
 
     <h2>b)</h2>
     <p>
-        For å teste at swarmen vår fungerer kan vi starte opp en noen containere. Bruk <a href="https://hub.docker.com/explore/">Docker Hub</a>
-        eller 'docker search' for å finne ferdige images på programmer, og kjør de med swarm-masteren satt som aktiv maskin.
-        Med 'docker ps' vises da kjørende containere for alle noder i swarmen.
+        For &aring; teste at swarmen v&aring;r fungerer kan vi starte opp en noen containere. Bruk <a href="https://hub.docker.com/explore/">Docker Hub</a>
+        eller 'docker search' for &aring; finne ferdige images p&aring; programmer, og kj&oslash;r de med swarm-masteren satt som aktiv maskin.
+        Med 'docker ps' vises da kj&oslash;rende containere for alle noder i swarmen.
     </p>
     Merk:
     <ul>
-        <li>Mange containere vil avslutte med en gang når de kjøres med 'docker run -d', og derfor ikke vil vises.</li>
+        <li>Mange containere vil avslutte med en gang n&aring;r de kj&oslash;res med 'docker run -d', og derfor ikke vil vises.</li>
         <li>
-            Hver av docker maskinene må ha tilgang til imaget for å kunne kjøre en container av det. Om man vil kjøre lokale
-            imager distribuert i en swarm må man derfor bygge det for hver maskin. Alternativt kan man benytte programmer
-            for å administrere images og containere, som f.eks Universal Control Plane (ikke gratis).
+            Hver av docker maskinene m&aring; ha tilgang til imaget for &aring; kunne kj&oslash;re en container av det. Om man vil kj&oslash;re lokale
+            imager distribuert i en swarm m&aring; man derfor bygge det for hver maskin. Alternativt kan man benytte programmer
+            for &aring; administrere images og containere, som f.eks Universal Control Plane (ikke gratis).
         </li>
     </ul>
-    Prøv for eksempel å kjøre:
+    Pr&oslash;v for eksempel &aring; kj&oslash;re:
     <ul>
         <li>Nginx</li>
         <li>Redis</li>
@@ -80,8 +80,8 @@
     </ul>
 
     <p>
-        For øvrig er det mulig å stoppe alle containere i en swarm med én kommando. Dersom swarm-masteren er aktiv, vil kommandoen
-        'docker ps -q' liste ut kjørende containere i hele swarm'en. Ved da å kombinere dette til 'docker stop $(docker ps -q)'
+        For &oslash;vrig er det mulig &aring; stoppe alle containere i en swarm med én kommando. Dersom swarm-masteren er aktiv, vil kommandoen
+        'docker ps -q' liste ut kj&oslash;rende containere i hele swarm'en. Ved da &aring; kombinere dette til 'docker stop $(docker ps -q)'
     </p>
 
     <!--div id="fremgang">
@@ -94,27 +94,27 @@
     <p>
         Grunnen til at dere ikke brukte workshopens egen applikasjon i b), er at images ikke automatisk distribueres til
         hele swarmen. En Swarm-master distribuerer kun <strong>kommandoene</strong> til nodene, ikke selve containerene,
-        og nodene må derfor ha korrekt image tilgjengelig for å kunne starte opp en container.
+        og nodene m&aring; derfor ha korrekt image tilgjengelig for &aring; kunne starte opp en container.
     </p>
     <p>
-        Ved første forsøk på å kjøre en container blir en node (tilfeldig?) valgt, og deretter vil alle
-        senere forsøk også styres til samme node. Forskjellen fra b), er at vår egen applikasjon så langt kun har vært et
-        lokalt image, mens de øvrige har kommet fra repositoryet Docker Hub. Ved å tilgjengeliggjøre et image på Docker Hub,
-        eller et annet konfigurert repository, så vil egen applikasjon kunne oppføre seg på samme måte.
+        Ved f&oslash;rste fors&oslash;k p&aring; &aring; kj&oslash;re en container blir en node (tilfeldig?) valgt, og deretter vil alle
+        senere fors&oslash;k ogs&aring; styres til samme node. Forskjellen fra b), er at v&aring;r egen applikasjon s&aring; langt kun har v&aelig;rt et
+        lokalt image, mens de &oslash;vrige har kommet fra repositoryet Docker Hub. Ved &aring; tilgjengeliggj&oslash;re et image p&aring; Docker Hub,
+        eller et annet konfigurert repository, s&aring; vil egen applikasjon kunne oppf&oslash;re seg p&aring; samme m&aring;te.
     </p>
         Dermed:
     <ul>
-        <li>Opprett konto på Docker Hub.</li>
-        <li>Bruk docker login til å logge på kontoen.</li>
+        <li>Opprett konto p&aring; Docker Hub.</li>
+        <li>Bruk docker login til &aring; logge p&aring; kontoen.</li>
         <li>Tag imaget med tagnavn &lt;konto&gt;/&lt;image-navn&gt;</li>
-        <li>Bruk docker push til å laste opp og tilgjengeliggjøre imaget</li>
-        <li>Kjør på samme måte som i b), men angi nå full tag heller enn lokalt image-navn. Husk å mappe portnummer.</li>
-        <li>Gjenta, og se med docker ps at det nå kjøres containere på flere noder.</li>
+        <li>Bruk docker push til &aring; laste opp og tilgjengeliggj&oslash;re imaget</li>
+        <li>Kj&oslash;r p&aring; samme m&aring;te som i b), men angi n&aring; full tag heller enn lokalt image-navn. Husk &aring; mappe portnummer.</li>
+        <li>Gjenta, og se med docker ps at det n&aring; kj&oslash;res containere p&aring; flere noder.</li>
     </ul>
     <p>
-        Ved å aksessere &lt;node-ip&gt;:8080/test kan man verifisere installasjonene. Nå kjører altså applikasjonen i et
-        cluster, men for å kunne drive lastbalansering vil man naturligvis måtte trenge en lastbalanserer i forkant. Her
-        kan man for eksempel bruke Apache eller Nginx (dette er ikke ment å være en del av oppgaven, dog).
+        Ved &aring; aksessere &lt;node-ip&gt;:8080/test kan man verifisere installasjonene. N&aring; kj&oslash;rer alts&aring; applikasjonen i et
+        cluster, men for &aring; kunne drive lastbalansering vil man naturligvis m&aring;tte trenge en lastbalanserer i forkant. Her
+        kan man for eksempel bruke Apache eller Nginx (dette er ikke ment &aring; v&aelig;re en del av oppgaven, dog).
     </p>
 
     <h2>Nyttige lenker</h2>

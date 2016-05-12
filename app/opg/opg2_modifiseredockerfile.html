@@ -46,50 +46,50 @@
 <div class="container">
     <h1>Oppgave 2 - Modifisering av Dockerfile</h1>
     <p>
-        Til nå har vi bare brukt en veldig enkel dockerfil, som baserer seg på et eksisterende image,
-        legger til en fil og deretter kjører denne ved oppstart. Det er mye mer man kan gjøre ved opprettelsen
-        av images, og i denne oppgaven skal vi se på noen av dem.
+        Til n&aring; har vi bare brukt en veldig enkel dockerfil, som baserer seg p&aring; et eksisterende image,
+        legger til en fil og deretter kj&oslash;rer denne ved oppstart. Det er mye mer man kan gj&oslash;re ved opprettelsen
+        av images, og i denne oppgaven skal vi se p&aring; noen av dem.
     </p>
     <p>
-        Hva som skal være inkludert i vårt ferdige docker-image kan styres ved å forandre hvilket image vi baserer oss på.
-        Hittil har vi basert dockerfilen vår på <a href="https://hub.docker.com/_/alpine/">Alpine</a>, som er en ekstremt
-        nedstrippet linux-versjon. Dette er et default image som ofte brukes, og har fordelen at det gir små containere
+        Hva som skal v&aelig;re inkludert i v&aring;rt ferdige docker-image kan styres ved &aring; forandre hvilket image vi baserer oss p&aring;.
+        Hittil har vi basert dockerfilen v&aring;r p&aring; <a href="https://hub.docker.com/_/alpine/">Alpine</a>, som er en ekstremt
+        nedstrippet linux-versjon. Dette er et default image som ofte brukes, og har fordelen at det gir sm&aring; containere
         med rask oppstartstid. Den mangler dog noen grunnleggende ting, som for eksempel Bash og Java.
     </p>
     <p>
-        Merk at henting av image man baserer seg på, og installering av pakker, skjer under byggingen av imaget.
-        Dette betyr at selve byggingen tar mer tid jo mer man gjør, og i tillegg vil imaget ta mer lagringsplass. Oppstartstid av
-        containeren blir ikke merkbart påvirket av dette. Ting som derimot vil påvirke oppstartstid er kjøring av scripts,
+        Merk at henting av image man baserer seg p&aring;, og installering av pakker, skjer under byggingen av imaget.
+        Dette betyr at selve byggingen tar mer tid jo mer man gj&oslash;r, og i tillegg vil imaget ta mer lagringsplass. Oppstartstid av
+        containeren blir ikke merkbart p&aring;virket av dette. Ting som derimot vil p&aring;virke oppstartstid er kj&oslash;ring av scripts,
         oppstart av applikasjoner etc.
     </p>
 
     <h2>a)</h2>
     <p>
-        Endre Dockerfile i mappen 'oppgave_2' slik at den legger til scriptet "hei.sh", og kjører dette ved oppstart. Observer at dette feiler,
-        ettersom programmet bash ikke finnes i imaget vi baserer oss på.
+        Endre Dockerfile i mappen 'oppgave_2' slik at den legger til scriptet "hei.sh", og kj&oslash;rer dette ved oppstart. Observer at dette feiler,
+        ettersom programmet bash ikke finnes i imaget vi baserer oss p&aring;.
     </p>
 
     <h2>b)</h2>
     <p>
-        Bruk Dockers søke-kommando for å finne det offisielle ubuntu-imaget, som inneholder bash, og endre din Dockerfile
-        slik at den baserer seg på den nyeste versjonen av dette. Denne kommandoen genererer en liste over matchende images
-        fra Docker Hub. Det er også mulig å gå inn på <a href="https://hub.docker.com/">Docker Hub</a> og finne imaget der.
-        Stjerner gir en indikasjon på hvor populært et image er, og offisielle images har også en egen markering.
-        Bygg og kjør fra Dockerfile på nytt, denne gangen basert på Ubuntu, og observer at containeren nå har tilgang
-        på bash, og at scriptet blir kjørt når containeren starter opp!
+        Bruk Dockers s&oslash;ke-kommando for &aring; finne det offisielle ubuntu-imaget, som inneholder bash, og endre din Dockerfile
+        slik at den baserer seg p&aring; den nyeste versjonen av dette. Denne kommandoen genererer en liste over matchende images
+        fra Docker Hub. Det er ogs&aring; mulig &aring; g&aring; inn p&aring; <a href="https://hub.docker.com/">Docker Hub</a> og finne imaget der.
+        Stjerner gir en indikasjon p&aring; hvor popul&aelig;rt et image er, og offisielle images har ogs&aring; en egen markering.
+        Bygg og kj&oslash;r fra Dockerfile p&aring; nytt, denne gangen basert p&aring; Ubuntu, og observer at containeren n&aring; har tilgang
+        p&aring; bash, og at scriptet blir kj&oslash;rt n&aring;r containeren starter opp!
     </p>
 
     <h2>c)</h2>
     <p>
-        Det er også mulig å modifisere imaget ved å installere ekstra pakker. Bruk Ubuntus package manager APT via RUN-kommandoen
-        i Dockerfile til å installere pakken "curl". Denne blir da installert under byggingen av imaget, og vil være
-        tilgjengelig når containeren startes. Endre også Dockerfilen slik at den kjører for eksempel 'tcurl -L checkip.dyndns.org'
-        ved oppstart. Observer at curl nå er installert og fungerer.
+        Det er ogs&aring; mulig &aring; modifisere imaget ved &aring; installere ekstra pakker. Bruk Ubuntus package manager APT via RUN-kommandoen
+        i Dockerfile til &aring; installere pakken "curl". Denne blir da installert under byggingen av imaget, og vil v&aelig;re
+        tilgjengelig n&aring;r containeren startes. Endre ogs&aring; Dockerfilen slik at den kj&oslash;rer for eksempel 'tcurl -L checkip.dyndns.org'
+        ved oppstart. Observer at curl n&aring; er installert og fungerer.
     </p>
 
 
     <div class="alert alert-danger">
-        <b>NB:</b> dersom docker har problemer med tilkobling til repositories kan det hjelpe å skru av VPN.
+        <b>NB:</b> dersom docker har problemer med tilkobling til repositories kan det hjelpe &aring; skru av VPN.
     </div>
 
     <h2>Nyttige lenker</h2>
@@ -97,7 +97,7 @@
         <li><a href="https://docs.docker.com/engine/userguide/containers/dockerimages/">Docker Docs - Images</a></li>
         <li><a href="https://docs.docker.com/engine/reference/builder/#cmd">Dockerfile CMD</a></li>
         <li><a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">
-            Dockerfile Best Practices (dekker også bruk av apt-get)</a></li>
+            Dockerfile Best Practices (dekker ogs&aring; bruk av apt-get)</a></li>
     </ul>
 
 </div>
