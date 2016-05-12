@@ -92,18 +92,25 @@
 
     <h2>Bonusoppgave</h2>
     <p>
-        Grunnen til at dere ikke brukte workshop'ens egen applikasjon i b), er at images ikke automatisk distribueres til
-        hele swarm'en. Ved første forsøk på å kjøre en container blir en node (tilfeldig?) valgt, og deretter vil alle
-        senere forsøk også styres til samme node. Forskjellen fra b), er at egen applikasjon så langt kun har vært et
-        lokalt image, mens øvrige kommer fra repositoryet Docker Hub. Ved å tilgjengeliggjøre et image på Docker Hub,
-        eller et annet konfigurert repository, så vil egen applikasjon kunne oppføre seg på samme måte. Dermed:
-        -Opprett konto på Docker Hub.
-        -Bruk docker login til å logge på kontoen.
-        -Tag imaget med tagnavn &lt;konto&gt;/&lt;image-navn&gt;
-        -Bruk docker push til å laste opp og tilgjengeliggjøre imaget
-        -Kjør på samme måte som i b), men angi nå full tag heller enn lokalt image-navn. Husk å mappe portnummer.
-        -Gjenta, og se med docker ps at det nå kjøres containere på flere noder.
+        Grunnen til at dere ikke brukte workshopens egen applikasjon i b), er at images ikke automatisk distribueres til
+        hele swarmen. En Swarm-master distribuerer kun <strong>kommandoene</strong> til nodene, ikke selve containerene,
+        og nodene må derfor ha korrekt image tilgjengelig for å kunne starte opp en container.
     </p>
+    <p>
+        Ved første forsøk på å kjøre en container blir en node (tilfeldig?) valgt, og deretter vil alle
+        senere forsøk også styres til samme node. Forskjellen fra b), er at vår egen applikasjon så langt kun har vært et
+        lokalt image, mens de øvrige har kommet fra repositoryet Docker Hub. Ved å tilgjengeliggjøre et image på Docker Hub,
+        eller et annet konfigurert repository, så vil egen applikasjon kunne oppføre seg på samme måte.
+    </p>
+        Dermed:
+    <ul>
+        <li>Opprett konto på Docker Hub.</li>
+        <li>Bruk docker login til å logge på kontoen.</li>
+        <li>Tag imaget med tagnavn &lt;konto&gt;/&lt;image-navn&gt;</li>
+        <li>Bruk docker push til å laste opp og tilgjengeliggjøre imaget</li>
+        <li>Kjør på samme måte som i b), men angi nå full tag heller enn lokalt image-navn. Husk å mappe portnummer.</li>
+        <li>Gjenta, og se med docker ps at det nå kjøres containere på flere noder.</li>
+    </ul>
     <p>
         Ved å aksessere &lt;node-ip&gt;:8080/test kan man verifisere installasjonene. Nå kjører altså applikasjonen i et
         cluster, men for å kunne drive lastbalansering vil man naturligvis måtte trenge en lastbalanserer i forkant. Her
