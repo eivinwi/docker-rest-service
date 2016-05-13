@@ -93,7 +93,11 @@
         denne gangen Docker-containerens port 8080 som localhosts port 8080. Verifiser at dette har fungert ved &aring; &aring;pne
         <a href="http://localhost:8080/test">http://localhost:8080/test</a>.
     </p>
-    <!-- TODO: vil localhost fungere? -->
+    <div class="alert alert-danger">
+        <strong>Merk: </strong> på Mac/Windows vil <strong>ikke</strong> mapping til localhost fungere, fordi Docker i seg selv kjører i
+        Virtualbox. Her må man da bruke IP-en til Docker istedenfor localhost. Denne IP-en vises når man åpner en ny instans
+        av Docker Quickstart Terminal (<a href="../pictures/machine_ip.png">slik som her</a>).
+    </div>
 
     <h2>d)</h2>
     <p>
@@ -103,7 +107,8 @@
         Image-navn og path til hvilken Dockerfile som brukes i byggingen spesifiseres i plugin-konfigurasjonen av maven-docker-plugin
         i pom.xml (konfigurasjonen er allerede fyllt inn for Oppgave 3).
         Bygg imaget med kommandoen 'mvn clean package docker:build', og se at imaget med navn spesifisert i pom.xml
-        dukker opp i Docker-milj&oslash;et (sjekkes med kommandoen 'docker images').
+        dukker opp i Docker-milj&oslash;et (sjekkes med kommandoen 'docker images'). P&aring; Mac/Windows m&aring; denne
+        byggingen kj&oslash;res i Quickstart terminalen, ettersom plugin-en bruker docker kommandoer.
     </p>
     <div class="alert alert-warning">
         NB: noen har hatt problemer med at Tomcat bruker lang tid p&aring; &aring; starte opp. Det kan da hjelpe &aring; legge til
