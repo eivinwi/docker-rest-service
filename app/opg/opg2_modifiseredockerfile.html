@@ -65,29 +65,35 @@
 
     <h2>a)</h2>
     <p>
-        Endre Dockerfile i mappen 'oppgave_2' slik at den legger til scriptet "hei.sh", og kj&oslash;rer dette ved oppstart. Observer at dette feiler,
-        ettersom programmet bash ikke finnes i imaget vi baserer oss p&aring;.
+        I Dockerfilen i mappen 'oppgave_2' legger vi scriptet 'checkJava.sh' til i containeren, og kjører dette på oppstart.
+        Scriptet skal bare sjekke hvilken Java-versjon vi har. Dette scriptet feiler, ettersom programmet Java ikke finnes
+        i imaget vi baserer oss p&aring;.
+    </p>
+    <p>
+        Bruk Dockers s&oslash;ke-kommando for &aring; finne det offisielle Java-imaget, som inneholder en JDK, og endre
+        din Dockerfile slik at den baserer seg p&aring; den nyeste versjonen av dette. S&oslash;ke-kommandoen genererer
+        en liste over matchende images fra Docker Hub. Det er ogs&aring; mulig &aring; g&aring; inn p&aring;
+        <a href="https://hub.docker.com/">Docker Hub</a> og finne imaget der. Stjerner gir en indikasjon p&aring;
+        hvor popul&aelig;rt et image er, og offisielle images har ogs&aring; en egen markering.
+    </p>
+    <p>
+        Bygg og kj&oslash;r fra Dockerfile p&aring; nytt, denne gangen basert p&aring; Java, og se at scriptet nå finner
+        Java og skriver ut informasjonen fra 'java --version' n&aring;r containeren stater opp.
     </p>
 
     <h2>b)</h2>
     <p>
-        Bruk Dockers s&oslash;ke-kommando for &aring; finne det offisielle ubuntu-imaget, som inneholder bash, og endre din Dockerfile
-        slik at den baserer seg p&aring; den nyeste versjonen av dette. Denne kommandoen genererer en liste over matchende images
-        fra Docker Hub. Det er ogs&aring; mulig &aring; g&aring; inn p&aring; <a href="https://hub.docker.com/">Docker Hub</a> og finne imaget der.
-        Stjerner gir en indikasjon p&aring; hvor popul&aelig;rt et image er, og offisielle images har ogs&aring; en egen markering.
-        Bygg og kj&oslash;r fra Dockerfile p&aring; nytt, denne gangen basert p&aring; Ubuntu, og observer at containeren n&aring; har tilgang
-        p&aring; bash, og at scriptet blir kj&oslash;rt n&aring;r containeren starter opp!
-    </p>
-
-    <h2>c)</h2>
-    <p>
-        Det er ogs&aring; mulig &aring; modifisere imaget ved &aring; installere ekstra pakker. Bruk Ubuntus package manager APT via RUN-kommandoen
-        i Dockerfile til &aring; installere pakken "curl". Denne blir da installert under byggingen av imaget, og vil v&aelig;re
+        Det er ogs&aring; mulig &aring; modifisere imaget man baserer seg p&aring; ved &aring; installere ekstra pakker.
+        Bytt imaget Dockerfilen baserer seg p&aring; fra Java til Ubuntu, og bruk Ubuntus package manager APT via RUN-kommandoen
+        i Dockerfile til &aring; installere pakken "curl" (se link nederst). Denne blir da installert under byggingen av imaget, og vil v&aelig;re
         tilgjengelig n&aring;r containeren startes. Endre ogs&aring; Dockerfilen slik at den kj&oslash;rer for eksempel 'curl -L checkip.dyndns.org'
         ved oppstart. Observer at curl n&aring; er installert og fungerer.
     </p>
 
-
+    <div class="alert alert-info">
+        Husk parameteren '-y' til apt-get install, ellers vil apt-get bli st&aring;ende &aring; vente p&aring; bruker-input,
+        som det ikke er mulig &aring; fylle inn i Docker.
+    </div>
     <div class="alert alert-danger">
         <b>NB:</b> dersom docker har problemer med tilkobling til repositories kan det hjelpe &aring; skru av VPN.
     </div>
