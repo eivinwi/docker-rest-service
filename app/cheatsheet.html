@@ -25,33 +25,30 @@
 </div>
 
 <div class="container">
-    <h1>Forklaring av begreper, og nyttige kommandoer.</h1>
+    <h1>Forklaring av begreper og nyttige kommandoer.</h1>
 
     <h2>Konsepter</h2>
-    <p><b>Docker Engine</b> er kjernen av Docker. Engine lar deg bygge isolerte beholdere som inneholder programmet ditt,
-        eller hva som helst du har lyst til &aring; kj&oslash;re. Dette gj&oslash;r den ved &aring; kj&oslash;re en veldig nedstrippet og spesialisert versjon av linux.</p>
+    <p>
+        <b>Docker Engine</b> er kjernen av Docker. Engine lar deg bygge isolerte beholdere som inneholder programmet ditt,
+        eller hva som helst du har lyst til &aring; kj&oslash;re. Dette gj&oslash;r den ved &aring; kj&oslash;re en veldig
+        nedstrippet og spesialisert versjon av linux.
+    </p>
+    <p>
+        <b>Docker Machine</b> er et verkt&oslash;y for deployment og automatisering av docker.
+    </p>
+    <p>
+        <b>Docker Swarm</b> er en m&aring;te &aring; bygge clustere p&aring;.
+    </p>
+    <p>
+        Et <b>Image</b> er en read-only template som kan brukes til &aring; lage Containers.
+        Et eksempel p&aring; et Image kan inneholde en versjon av Ubuntu, en installasjon av Apache, og en web-applikasjon.
+    </p>
+    <p>
+        En <b>Container</b> er en instans av et image. En container er en helt isolert applikasjonsplattform,
+        som inneholder programmer som skal kj&oslash;res, samt alle n&oslash;dvendige dependencies.
+    </p>
 
-    <p><b>Docker Machine</b> er et verkt&oslash;y for deployment og automatisering av docker.</p>
-    <p><b>Docker Swarm</b> er en m&aring;te &aring; bygge clustere p&aring;.</p>
-
-    <p>Et <b>Image</b> er en read-only template som kan brukes til &aring; lage Containers.
-        Et eksempel p&aring; et Image kan inneholde en versjon av Ubuntu, en installasjon av Apache, og en web-applikasjon. </p>
-    <p>En <b>Container</b> er en instanst av et image. En container er en helt isolert applikasjonsplattform, som inneholder programmer som skal kj&oslash;res, og alle n&oslash;dvendige dependencies.</p>
-
-
-    <h2>Docker Engine: nyttige lenker</h2>
-
-    <div>
-        <a href="https://github.com/wsargent/docker-cheat-sheet">Docker commands cheatsheet</a>
-    </div>
-    <div>
-        <a href="https://docs.docker.com/machine/reference/">Docker-machine commands</a>
-    </div>
-    <div>
-        <a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">Dockerfile best practices</a>
-    </div>
-
-    <h2>Docker Engine: kommandoer</h2>
+    <h2>Docker Engine: kommandoer (se docker --help)</h2>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -65,6 +62,23 @@
         <tr><td>docker run &lt;image&gt; &lt;params....&gt;</td><td>kj&oslash;rer spesifisert docker-image med parametere</td></tr>
         <tr><td>docker inspect &lt;imagenavn / containerid&gt;</td><td>viser nyttig informasjon om image/container</td></tr>
         <tr><td>docker rmi -f &lt;imagenavn / containerid&gt;</td><td>fjerner spesifisert image</td></tr>
+    </table>
+
+    <h2>Docker Machine: kommandoer (se docker-machine --help)</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Kommando</th>
+            <th>Effekt</th>
+        </tr>
+        </thead>
+        <tr><td>docker-machine ls</td><td>viser alle tilgjengelige hosts</td></tr>
+        <tr><td>docker-machine stop &lthost-navn&gt</td><td>stopper en kj&oslash; host</td></tr>
+        <tr><td>docker-machine start &lthost-navn&gt</td><td>starter en eksisterende host</td></tr>
+        <tr><td>docker-machine ssh &lthost-navn&gt</td><td>ssh-er inn i en host (ssh-keys er satt opp automatisk)</td></tr>
+        <tr><td>docker-machine create -d virtualbox &ltnavn&gt</td><td>lager en ny, lokal host</td></tr>
+        <tr><td>eval "$(docker-machine env &ltnavn&gt)"</td><td>sett en host som den aktive i docker-machine</td></tr>
+        <tr><td>eval "$(docker-machine env -u)"</td><td>sett <strong>ingen</strong> hosts som aktive i docker-machine</td></tr>
     </table>
 
 </div>
