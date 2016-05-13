@@ -64,17 +64,14 @@
         n&aring;r containeren startes opp, og persistere n&aring;r containeren termineres! Sjekk at du finner filen der du forventer det
         med en filutforsker.
     </p>
-    <a name="mounting-tips">
-        <div class="alert alert-warning">
-            <b>Merk: </b> n&aring;r en lokal docker-host er satt som aktiv i docker-machine, vil lokale filbaner som parametere til 'docker run -v'
-            referere til filbanen i den aktive docker host-en, <strong>med unntak av hjemmekatalogen</strong>. Dette er fordi
-            Docker-machine p&aring; Mac/Windows alltid fors&oslash;ker &aring; mounte henholdsvis /Users /c/Users, slik at de blir tilgjengelige lokalt p&aring; host-en.
-            P&aring; Linux gj&oslash;res ikke dette, men til gjengjeld kan man her bruke Docker uten en docker-machine som mellommann. Dette
-            gj&oslash;res ved &aring; ikke sette noen machines som aktive ('eval "$(docker-machine env -u)"'). Om volumer skal mountes p&aring;
-            remote hosts m&aring; filene enten kopieres, eller man m&aring; bruke en data volume container.
-        </div>
-    </a>
-
+    <div id="mounting-tips" class="alert alert-warning">
+        <b>Merk: </b> n&aring;r en lokal docker-host er satt som aktiv i docker-machine, vil lokale filbaner som parametere til 'docker run -v'
+        referere til filbanen i den aktive docker host-en, <strong>med unntak av hjemmekatalogen</strong>. Dette er fordi
+        Docker-machine p&aring; Mac/Windows alltid fors&oslash;ker &aring; mounte henholdsvis /Users /c/Users, slik at de blir tilgjengelige lokalt p&aring; host-en.
+        P&aring; Linux gj&oslash;res ikke dette, men til gjengjeld kan man her bruke Docker uten en docker-machine som mellommann. Dette
+        gj&oslash;res ved &aring; ikke sette noen machines som aktive ('eval "$(docker-machine env -u)"'). Om volumer skal mountes p&aring;
+        remote hosts m&aring; filene enten kopieres, eller man m&aring; bruke en data volume container.
+    </div>
 
     <h2>b)</h2>
     <p>
