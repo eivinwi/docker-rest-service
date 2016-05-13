@@ -84,13 +84,16 @@
         s&aring; mange CMDs man vil, kan man kun ha ett Entrypoint. For containere som er ment &aring; fungere som en executable er
         det fordelaktig &aring; bruke Entrypoint.
     </p>
-    <!-- TODO: link cmd/entrypoint -->
 
     <h2>c)</h2>
     <p>
         For &aring; kunne aksessere containeren i nettleser m&aring; containerens interne porter mappes til faktiske porter p&aring; den
         lokale maskinen. Dette defineres med parameterene n&aring;r man kj&oslash;rer containeren. Kj&oslash;r containeren p&aring; nytt, men publiser
-        denne gangen Docker-containerens port 8080 som localhosts port 8080. Verifiser at dette har fungert ved &aring; &aring;pne
+        denne gangen Docker-containerens port 8080 som localhosts port 8080. I lenken til 'Publish ports' angir de en IP
+        i tillegg til port-nummer, men dropp dette.
+    </p>
+    <p>
+        Verifiser at dette har fungert ved &aring; &aring;pne
         <a href="http://localhost:8080/test">http://localhost:8080/test</a>.
     </p>
     <div class="alert alert-danger">
@@ -102,10 +105,8 @@
     <h2>d)</h2>
     <p>
         Istedenfor &aring; manuelt kopiere JAR-fil og bygge docker imaget p&aring; nytt hver gang Maven har kj&oslash;rt, kan vi f&aring; Maven til
-        &aring; bygge det automatisk. Pluginen maven-docker-plugin er allerede lagt til i pom.xml, det eneste som mangler er &aring; konfigurere
-        den med korrekt path til Dockerfilen for denne oppgaven, og &aring; sette navn p&aring; imaget som skal lages!
-        Image-navn og path til hvilken Dockerfile som brukes i byggingen spesifiseres i plugin-konfigurasjonen av maven-docker-plugin
-        i pom.xml (konfigurasjonen er allerede fyllt inn for Oppgave 3).
+        &aring; bygge det automatisk. Se maven-docker-plugin som allerede ligger i pom.xml. Konfigurasjonen av denne er ferdig utfyllt, men observer at
+        image-navn og path til korrekt Dockerfile er fylt ut. Dette kan måtte byttes i senere oppgaver.
     </p>
     <p>
         Bygg imaget med kommandoen 'mvn clean package docker:build', og se at imaget med navn spesifisert i pom.xml
@@ -119,9 +120,8 @@
 
     <h2>Nyttige lenker</h2>
     <ul>
-        <li>Link til maven-doc</li>
         <li><a href="https://docs.docker.com/engine/userguide/containers/dockerimages/">Docker Docs - Images</a></li>
-        <li><a href="https://docs.docker.com/engine/reference/builder/#entrypoint"></a>Dockerfile Entrypoint</li>
+        <li><a href="https://docs.docker.com/engine/reference/builder/#entrypoint">Dockerfile Entrypoint</a></li>
         <li><a href="https://docs.docker.com/engine/reference/commandline/run/#publish-or-expose-port-p-expose">Docker Docs - Publish ports</a></li>
         <li><a href="https://github.com/spotify/docker-maven-plugin">Docker-maven-plugin</a></li>
     </ul>
