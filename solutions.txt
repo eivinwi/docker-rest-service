@@ -1,0 +1,224 @@
+###########################
+# Oppgave 1a:
+# Endre oppgave_1/Dockerfile til:
+
+FROM alpine:latest
+ENTRYPOINT ["echo", "Hellow World, this is Docker!"]
+# Alternativt CMD
+
+# Så: 
+docker build -t <name> <dir>
+
+###########################
+# Oppgave 1b:
+docker images
+
+###########################
+# Oppgave 1c:
+docker run <name>
+
+
+###########################
+# Oppgave 2a
+# Endre oppgave_2/Dockerfile til:
+
+FROM java:latest
+ADD checkJava.sh /
+CMD ["sh", "./checkJava.sh"]
+
+# så:
+docker build -t <name> <dir>
+docker run <name>
+
+
+###########################
+# Oppgave 2b
+# Endre oppgave_2/Dockerfile til:
+# 
+FROM ubuntu:latest
+RUN apt-get update && apt-get install -y curl
+ENTRYPOINT ["curl", "-L", "checkip.dyndns.org"]
+# alternativt CMD
+
+
+###########################
+# Oppgave 3a:
+#
+# Bygg applikasjonen med 'mvn clean install' i root-mappen til DockerClient.
+java -jar target/docker-client-1.0-SNAPSHOT.jar
+
+
+###########################
+# Oppgave 3b:
+#
+# Kopier jar til dir??
+# Endre oppgave_2/Dockerfile til:
+#
+FROM java:openjdk-8-jdk
+# Oppgave 3. Stikkord her er ADD og ENTRYPOINT
+ADD docker-client-1.0-SNAPSHOT.jar /app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+###########################
+# Oppgave 3c:
+#
+# Linux: kjør containeren med:
+docker run -p 8080:8080
+# Mac/Windows: kjør containeren med:
+docker run -p <ip>:8080:8080
+
+
+###########################
+# Oppgave 4a:
+#
+docker save <name> > fil.tar
+
+
+###########################
+# Oppgave 4b:
+# 
+eval "$(ssh-agent -s)"
+ssh-add <path-til-utdelt-nøkkel>
+scp <path-til-fil-fra-4a> root@<utdelt-ip>:.
+
+
+###########################
+# Oppgave 4c:
+# 
+ssh root@<utdelt-ip
+docker load < fil.tar
+
+
+###########################
+# Oppgave 4d:
+# kjør: 
+docker run -p 8080:8080 <navn>
+
+
+###########################
+# Oppgave 5a:
+# 
+docker-machine create -d virtualbox <navn>
+
+
+###########################
+# Oppgave 5b:
+# 
+docker-machine create --driver digitalocean --digitalocean-access-token <api-token> <navn>
+docker-machine ls
+
+###########################
+# Oppgave 5c:
+# 
+eval "$(docker-machine env <maskin-navn>)"
+docker build -t <navn> <path-til-opg3>
+docker run -p 8080:8080 <navn>     
+
+
+###########################
+# Oppgave 5d:
+# 
+# docker-machine ssh <navn>
+
+
+###########################
+# Oppgave 6a:
+# 
+#
+docker-machine create -d virtualbox local
+eval "$(docker-machine env local)"
+docker run swarm create   (ta med token herfra videre)
+ 
+# en av: 
+docker-machine create \
+    -d virtualbox \
+    --swarm \
+    --swarm-master \
+    --swarm-discovery token://<token> \
+    swarm-manager
+
+# 2-3 av:
+docker-machine create \
+    -d virtualbox \
+    --swarm \
+    --swarm-discovery token://<token> \
+    <node01>
+
+
+#så:
+eval "$(docker-machine env --swarm swarm-manager)"
+docker info
+
+
+###########################
+# Oppgave 6b:
+# 
+docker run -d nginx
+docker run -d redis
+docker run -d mongo
+docker run -d httpd
+
+docker ps
+docker stop "$(docker ps -q)"
+
+
+###########################
+# Oppgave 6 bonusoppgave:
+-
+
+
+###########################
+# Oppgave 7a:
+docker run -v <lokal-path>:<path-i-container> <navn>
+
+
+###########################
+# Oppgave 7b:
+#
+# endre filen docker-client/src/main/resources/logback.xml slik
+# at den logger til mappen som skal mountes
+# samme mount-kommando som 7a
+
+
+###########################
+# Oppgave 7 bonusoppgave:
+-
+
+
+###########################
+# Oppgave 8a:
+docker search mysql
+docker run --name <navn> -e MYSQL_ROOT_PASSWORD=<passord> -d mysql:latest
+docker exex -it <container-id> bash
+mysql -p
+CREATE DATABASE db;
+USE db;
+CREATE TABLE test;
+exit
+exit
+
+
+###########################
+# Oppgave 8b:
+docker ps 
+docker stop <container-id>
+docker start <container-id>
+docker exex -it <container-id> bash
+mysql -p
+SHOW DATABASES;
+SELECT * FROM db.test;
+exit 
+exit
+
+
+###########################
+# Oppgave 8c:
+eval "$(docker-machine env default)"
+docker run --name <navn> -v <lokal-path>:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=<passord> -d mysql:latest
+ls <lokal-path>
+
+
+###########################
+# Oppgave 8 bonusoppgave:
+-
