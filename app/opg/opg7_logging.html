@@ -66,11 +66,15 @@
     </p>
     <div id="mounting-tips" class="alert alert-warning">
         <b>Merk: </b> n&aring;r en lokal docker-host er satt som aktiv i docker-machine, vil lokale filbaner som parametere til 'docker run -v'
-        referere til filbanen i den aktive docker host-en, <strong>med unntak av hjemmekatalogen</strong>. Dette er fordi
+        referere til filbanen i den aktive docker host-en (pil 1 i figuren), <strong>med unntak av hjemmekatalogen</strong> (pil 2 i figuren). Dette er fordi
         Docker-machine p&aring; Mac/Windows alltid fors&oslash;ker &aring; mounte henholdsvis /Users /c/Users, slik at de blir tilgjengelige lokalt p&aring; host-en.
         P&aring; Linux gj&oslash;res ikke dette, men til gjengjeld kan man her bruke Docker uten en docker-machine som mellommann. Dette
         gj&oslash;res ved &aring; ikke sette noen machines som aktive ('eval "$(docker-machine env -u)"'). Om volumer skal mountes p&aring;
         remote hosts m&aring; filene enten kopieres, eller man m&aring; bruke en data volume container.
+    </div>
+    <div>
+        <img src="../pictures/datavolum.png">
+        <figcaption>1: Volum-mapping av type /var/log:/var/log<br>2: Volum-mapping (Windows-syntaks) av type /c/Users/&lt;brukernavn&gt;/&lt;katalognavn&gt;:/var/log</figcaption>
     </div>
 
     <h2>b)</h2>
