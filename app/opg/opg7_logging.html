@@ -65,12 +65,14 @@
         med en filutforsker.
     </p>
     <div id="mounting-tips" class="alert alert-warning">
-        <b>Merk: </b> n&aring;r en lokal docker-host er satt som aktiv i docker-machine, vil lokale filbaner som parametere til 'docker run -v'
-        referere til filbanen i den aktive docker host-en (pil 1 i figuren), <strong>med unntak av hjemmekatalogen</strong> (pil 2 i figuren). Dette er fordi
-        Docker-machine p&aring; Mac/Windows alltid fors&oslash;ker &aring; mounte henholdsvis /Users /c/Users, slik at de blir tilgjengelige lokalt p&aring; host-en.
-        P&aring; Linux gj&oslash;res ikke dette, men til gjengjeld kan man her bruke Docker uten en docker-machine som mellommann. Dette
-        gj&oslash;res ved &aring; ikke sette noen machines som aktive ('eval "$(docker-machine env -u)"'). Om volumer skal mountes p&aring;
-        remote hosts m&aring; filene enten kopieres, eller man m&aring; bruke en data volume container.
+        <b>OBS: </b>En mapping vil alltid v&aelig;re mellom containeren og "maskinen man kj&oslashrer p&aring;". Med det menes faktisk
+        maskinen som vises aktiv n&aring;r kommandoen 'docker-machine ls' kj&oslashres. Det betyr at selv om man i praksis kj&oslashrer alt
+        lokalt, s&aring; f&aring;r man i utgangspunktet ikke mappet datavolum til en lokal filsti. P&aring; <b>Linux</b> l&oslashser man
+        dette for eksempel ved &aring; s&oslashrge for at ingen docker-machines er aktive ('eval "$(docker-machine env -u)"'). P&aring; <b>Mac/Windows</b> m&aring; man alltid
+        ha en aktiv maskin, s&aring; der har Docker laget en spesiall&oslashsning: Hjemmekatalogen (/Users/&lt;brukernavn&gt;/ og
+        C:/Users&lt;brukernavn&gt;/) mappes automatisk fra lokal maskin og til enhver lokal docker-machine. S&aring; dersom man s&aring;
+        setter opp et datavolum som mapper til hjemmekatalogen, s&aring; vil dette fungere som en bro helt ut til din lokale filsti.
+        Merk at syntaksen for &aring; angi "C:/Users" er litt spesiell: "/c/Users".
     </div>
     <div>
         <img src="../pictures/datavolum.png">
