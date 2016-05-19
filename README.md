@@ -1,5 +1,5 @@
 ## Docker Rest Service
-### Should probably be renamed as it is not really as REST service anymore.
+##### Should probably be renamed as it is not really as REST service anymore.
 
 This is a server application used to serve Tasks and installation guides for our Docker workshop.The workshop ~~probably~~
 won't make ~~much~~ any sense unless you speak Norwegian, so all the instructions will be in Norwegian.
@@ -12,13 +12,13 @@ npm init
 npm install
 ```
 
-#### Kjøring
+##### Kjøring
 Workshop-delen består kun av statiske html-sider, og serveren kan lett startes med:
 ```
 http-server .
 ```
 
-#### Kjøring med Docker
+##### Kjøring med Docker
 Alternativt kan workshoppen også kjøres som en Docker container. Dette er en veldig rask og enkel måte å kjøre opp
 workshoppen på en Docker host.
 ```
@@ -33,8 +33,8 @@ lag, som blir målt mot hverandre på tid. Denne er for tiden ikke i bruk, fordi
 
 
 ### Client-applikasjonen
-Prosjektet inneholder også en klient-applikasjon som hver av deltakerene på workshoppen skal bruke, denne er beskrevet
-[her](https://github.com/eivinwi/docker-client).
+Prosjektet inneholder også en klient-applikasjon som hver av deltakerene på workshoppen skal bruke,
+[denne er beskrevet her](https://github.com/eivinwi/docker-client).
 
 
 
