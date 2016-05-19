@@ -66,9 +66,6 @@
         containeren skal dog v&aelig;re /innicontainer for at oppgaven skal fungere uten modifikasjoner. Det som nemlig skjer (se Dockerfile, om du vil),
         er at containeren toucher/oppretter filen /innicontainer/touchet_fil.txt. I og med at du har lagt inn mapping, s&aring; skal filen n&aring; ogs&aring;
         finnes i kopi utenfor containeren - verifiser dette. Filen skal ogs&aring; finnes n&aring;r containeren er terminert.
-        linux-kommandoen 'touch' for &aring; opprette en fil der n&aring;r den starter opp . Filen skal da dukke opp i host-filsystemet
-        n&aring;r containeren startes opp, og persistere n&aring;r containeren termineres! Sjekk at du finner filen der du forventer det
-        med en filutforsker.
     </p>
     <p>
         Motsatt, s&aring; skal man ogs&aring; kunne opprette filer lokalt i den mappede katalogen, og finne dem igjen inni containeren n&aring;r den kj&oslash;rer.
