@@ -61,7 +61,7 @@
     <p>
         Bygg et image med Dockerfile fra katalog 'oppgave_7' - gj&oslash;r dette ved &aring; endre dockerDirectory i pom.xml, og bygg med kommando
         'mvn clean install docker:build'. For &aring; skille imaget fra oppgave 3 kan du ogs&aring; eventuelt endre imageName i pom.xml. N&aring; skal du
-        mounte en mappe fra det lokale filsystemet til en mappe i docker-containeren, hvilket gj&oslash;res med parametre til 'docker run' n&aring;r du
+        mounte en mappe fra det lokale filsystemet til en mappe i docker-containeren, hvilket gj&oslash;res med parametre til 'docker run' (hint: -v) n&aring;r du
         skal kj&oslash;re en container basert p&aring; imaget du akkurat bygget. Lokal mappe kan dere velge selv, men se OBS under f&oslash;rst. Mappen i
         containeren skal dog v&aelig;re /innicontainer for at oppgaven skal fungere uten modifikasjoner. Det som nemlig skjer (se Dockerfile, om du vil),
         er at containeren toucher/oppretter filen /innicontainer/touchet_fil.txt. I og med at du har lagt inn mapping, s&aring; skal filen n&aring; ogs&aring;

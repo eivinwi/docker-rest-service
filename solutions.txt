@@ -63,16 +63,16 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 ###########################
 # Oppgave 3c:
 #
-# Linux: kjør containeren med:
+# Kjør containeren med:
 docker run -p 8080:8080
-# Mac/Windows: kjør containeren med:
-docker run -p <ip>:8080:8080
-
+# På Linux, aksesser på localhost:8080, på Windows/Mac, aksesser på docker-machine-ip:8080
 
 ###########################
 # Oppgave 4a:
 #
 docker save <name> > fil.tar
+# eller
+docker save -o fil.tar <name>
 
 
 ###########################
@@ -86,8 +86,10 @@ scp <path-til-fil-fra-4a> root@<utdelt-ip>:.
 ###########################
 # Oppgave 4c:
 # 
-ssh root@<utdelt-ip
+ssh root@<utdelt-ip>
 docker load < fil.tar
+# eller
+docker load -i fil.tar
 
 
 ###########################
@@ -106,6 +108,9 @@ docker-machine create -d virtualbox <navn>
 # Oppgave 5b:
 # 
 docker-machine create --driver digitalocean --digitalocean-access-token <api-token> <navn>
+# Med api-token planlagt til første iterasjon av workshopen:
+docker-machine create --driver digitalocean --digitalocean-access-token bd6f5a35008ff90999251cbbe024273aee929fafed2519b00fefddba51dc0ef5 <navn>
+
 docker-machine ls
 
 ###########################
@@ -170,7 +175,8 @@ docker stop "$(docker ps -q)"
 
 ###########################
 # Oppgave 7a:
-docker run -v <lokal-path>:<path-i-container> <navn>
+mvn clean install docker:build
+docker run -v <lokal-path>:/innicontainer <navn>
 
 
 ###########################
