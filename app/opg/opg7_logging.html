@@ -59,10 +59,19 @@
 
     <h2>a)</h2>
     <p>
-        Mount en mappe fra det lokale filsystemet til en mappe i docker-containeren, og la docker-containeren bruke
-        linux-kommandoen 'touch' for &aring; opprette en fil der n&aring;r den starter opp. Filen skal da dukke opp i host-filsystemet
+        Bygg et image med Dockerfile fra katalog 'oppgave_7' - gj&oslash;r dette ved &aring; endre dockerDirectory i pom.xml, og bygg med kommando
+        'mvn clean install docker:build'. For &aring; skille imaget fra oppgave 3 kan du ogs&aring; eventuelt endre imageName i pom.xml. N&aring; skal du
+        mounte en mappe fra det lokale filsystemet til en mappe i docker-containeren, hvilket gj&oslash;res med parametre til 'docker run' n&aring;r du
+        skal kj&oslash;re en container basert p&aring; imaget du akkurat bygget. Lokal mappe kan dere velge selv, men se OBS under f&oslash;rst. Mappen i
+        containeren skal dog v&aelig;re /innicontainer for at oppgaven skal fungere uten modifikasjoner. Det som nemlig skjer (se Dockerfile, om du vil),
+        er at containeren toucher/oppretter filen /innicontainer/touchet_fil.txt. I og med at du har lagt inn mapping, s&aring; skal filen n&aring; ogs&aring;
+        finnes i kopi utenfor containeren - verifiser dette. Filen skal ogs&aring; finnes n&aring;r containeren er terminert.
+        linux-kommandoen 'touch' for &aring; opprette en fil der n&aring;r den starter opp . Filen skal da dukke opp i host-filsystemet
         n&aring;r containeren startes opp, og persistere n&aring;r containeren termineres! Sjekk at du finner filen der du forventer det
         med en filutforsker.
+    </p>
+    <p>
+        Motsatt, s&aring; skal man ogs&aring; kunne opprette filer lokalt i den mappede katalogen, og finne dem igjen inni containeren n&aring;r den kj&oslash;rer.
     </p>
     <div id="mounting-tips" class="alert alert-warning">
         <b>OBS: </b>En mapping vil alltid v&aelig;re mellom containeren og "maskinen man kj&oslashrer p&aring;". Med det menes faktisk
