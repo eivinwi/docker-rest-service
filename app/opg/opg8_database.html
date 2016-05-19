@@ -82,16 +82,17 @@
     </p>
     <div class="alert alert-warning">
         Husk det som ble nevnt ang. docker-machine og mounting av lokale mapper som volumer
-        <a href="opg7_logging.html#mounting-tips">i forrige oppgave</a>!
+        <a href="opg7_logging.html#mounting-tips">i forrige oppgave</a>! MySQL kan for &oslash;vrig komme til &aring; kreve
+        at katalogen som mappes er tom i utgangspunktet.
     </div>
 
     <h2>Bonusoppgave</h2>
     <p>
         For at en database i en container skal v&aelig;re nyttig m&aring; den kunne aksesseres. Det er flere m&aring;ter &aring; gj&oslash;re dette p&aring;,
         men den enkleste er &aring; aksessere den via ip-addressen til hosten den kj&oslash;rer p&aring;. Kj&oslash;r en container av MySQL, og map
-        containerens MySQL-port (3306) til en port p&aring; hosten. &aring;pne bash p&aring; host-en, start start MySQL og lag en bruker som
-        kan aksessere databasen fra ip-er (bruk 'bruker'&'%'). Test at du kan n&aring; databasen ved &aring; koble p&aring; fra en terminal
-        fra din pc, med en kommando p&aring; formen 'mysql -u &ltbruker&gt -p -h &ip-en til <strong>docker-hosten</strong>&gt'.
+        containerens MySQL-port (3306) til en port p&aring; hosten. Test at du kan n&aring; databasen ved &aring; koble p&aring; fra en terminal
+        fra din pc, med en kommando p&aring; formen 'mysql -u &ltbruker&gt -p -h &lt;ip-en til <strong>docker-hosten</strong>&gt'. Alternativt kan du
+        bruke et hvilket som helst MySQL-verktøy for å koble på.
     </p>
 
     <h3>Avsluttende tips</h3>
