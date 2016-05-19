@@ -183,7 +183,7 @@ docker run -v <lokal-path>:/innicontainer <navn>
 # Oppgave 7b:
 #
 # endre filen docker-client/src/main/resources/logback.xml slik
-# at den logger til mappen som skal mountes
+# at den logger til /innicontainer, mappen som skal mountes
 # samme mount-kommando som 7a
 
 
@@ -196,7 +196,7 @@ docker run -v <lokal-path>:/innicontainer <navn>
 # Oppgave 8a:
 docker search mysql
 docker run --name <navn> -e MYSQL_ROOT_PASSWORD=<passord> -d mysql:latest
-docker exex -it <container-id> bash
+docker exec -it <container-id> bash
 mysql -p
 CREATE DATABASE db;
 USE db;
