@@ -1,22 +1,26 @@
 ## Docker Rest Service
-##### Should probably be renamed as it is not really as REST service anymore.
+##### Should probably be renamed as it is not really a REST service anymore.
 
 This is a server application used to serve Tasks and installation guides for our Docker workshop.The workshop ~~probably~~
 won't make ~~much~~ any sense unless you speak Norwegian, so all the instructions will be in Norwegian.
 
 
 ### Installasjon
-Alle instruksjoner forutsetter at man står i mappen 'app'.
+Alle instruksjoner forutsetter at man står i mappen 'app'. Krever at du har npm installert, hvilket
+på Windows og Mac blant annet kommer med vanlig Docker-installasjon.
 ```
 npm init
 npm install
 ```
+
+NB: På Windows kan det være nødvendig å kjøre eksplisitt følgende kommando også: 'npm install -g http-server'.
 
 ##### Kjøring
 Workshop-delen består kun av statiske html-sider, og serveren kan lett startes med:
 ```
 http-server .
 ```
+Serveren er nå tilgjengelig på http://localhost:8080.
 
 ##### Kjøring med Docker
 Alternativt kan workshoppen også kjøres som en Docker container. Dette er en veldig rask og enkel måte å kjøre opp
