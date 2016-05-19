@@ -90,8 +90,9 @@
 
     <h2>b)</h2>
     <p>
-        Akkurat det samme kan gj&oslash;res for loggfiler som skrives til av programmer. &Aring;pne filen 'logback.xml', som inneholder
-        loggkonfigurasjonene for DockerClient, og endre pathen for loggene til mappen der du i oppgave a) mountet datavolumet.
+        Akkurat det samme kan gj&oslash;res for loggfiler som skrives til av programmer. F&oslash;rst, endre 'oppgave_7/Dockerfile' i henhold
+        til kommentaren i filen, deretter &aring;pne filen 'logback.xml', som inneholder
+        loggkonfigurasjonene for DockerClient. Endre pathen for loggene til mappen der du i oppgave a) mountet datavolumet.
         Under kj&oslash;ring vil docker n&aring; skrive filene til host-filsystemet - kj&oslash;r gjerne detached (-d) for &aring; unng&aring;
         at all logg ogs&aring; kommer i terminalvinduet ditt. Sjekk igjen at filene dukker opp der de forventes, og at
         programmet har klart &aring; skrive til dem.
