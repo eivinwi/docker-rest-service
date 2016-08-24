@@ -62,9 +62,18 @@
     <h2>a)</h2>
     <p>
         Endre filen 'Dockerfile' i mappen 'oppgave_1', slik at containeren vil kj&oslash;re linux-kommandoen "echo" med argumentet
-        "Hello World, this is Docker!" n&aring;r den starter opp. Bruk Dockers bygge-kommando for &aring; utf&oslash;re instruksjonene i
-        Dockerfile for &aring; bygge imaget.
+        "Hello World, this is Docker!" n&aring;r den starter opp (hint: CMD). Bruk Dockers bygge-kommando for &aring; utf&oslash;re instruksjonene i
+        Dockerfile for &aring; bygge imaget. Det anbefales å stå i samme mappe som Dockerfile når bygge-kommandoen kjøres. Hvis
+        en linje a la f&oslash;lgende er blitt skrevet ut, så lyktes byggingen: "Successfully built e9d6fc444937" (autogenerert
+        id vil variere).
     </p>
+
+    <div class="alert alert-info">
+        NB: Windows-brukere vil få følgende ufarlige feilmelding, ikke bli skremt:<br>
+        SECURITY WARNING: You are building a Docker image from Windows against a non-Windows Docker host. All files and
+        directories added to build context will have '-rwxr-xr-x' permissions. It is recommended to double check and reset
+        permissions for sensitive files and directories.
+    </div>
 
     <h2>b)</h2>
     <p>
@@ -78,10 +87,10 @@
 
     <h2>Nyttige lenker</h2>
     <ul>
-        <li><a href="https://docs.docker.com/engine/userguide/eng-image/baseimages/">Docker Docs - Create a Base Image</a></li>
+        <li><a href="https://docs.docker.com/engine/getstarted/step_four/">Build your own image</a></li>
+        <li><a href="https://docs.docker.com/engine/reference/builder/#cmd">Dockerfile - CMD</a></li>
         <li><a href="https://docs.docker.com/engine/userguide/containers/dockerimages/#listing-images-on-the-host">List Docker Images</a></li>
         <li><a href="https://docs.docker.com/engine/reference/run">Docker Run reference</a></li>
-        <li><a href="https://docs.docker.com/engine/reference/builder/#cmd">Dockerfile - CMD</a></li>
     </ul>
 </div>
 
