@@ -73,10 +73,10 @@
         </tr>
         </thead>
         <tr><td>docker-machine ls</td><td>viser alle tilgjengelige hosts</td></tr>
-        <tr><td>docker-machine stop &lthost-navn&gt</td><td>stopper en kj&oslash; host</td></tr>
+        <tr><td>docker-machine stop &lthost-navn&gt</td><td>stopper en kj&oslash;rende host</td></tr>
         <tr><td>docker-machine start &lthost-navn&gt</td><td>starter en eksisterende host</td></tr>
         <tr><td>docker-machine ssh &lthost-navn&gt</td><td>ssh-er inn i en host (ssh-keys er satt opp automatisk)</td></tr>
-        <tr><td>docker-machine create -d virtualbox &ltnavn&gt</td><td>lager en ny, lokal host</td></tr>
+        <tr><td>docker-machine create -d virtualbox &ltnavn&gt</td><td>lager en ny, lokal host. NB: -d hyperv på Hyper-V, og andre drivere for remote hosts.</td></tr>
         <tr><td>eval "$(docker-machine env &ltnavn&gt)"</td><td>sett en host som den aktive i docker-machine</td></tr>
         <tr><td>eval "$(docker-machine env -u)"</td><td>sett <strong>ingen</strong> hosts som aktive i docker-machine</td></tr>
     </table>
