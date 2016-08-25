@@ -38,7 +38,7 @@ lag, som blir målt mot hverandre på tid. Denne er for tiden ikke i bruk, fordi
 
 ### Client-applikasjonen
 Prosjektet inneholder også en klient-applikasjon som hver av deltakerene på workshoppen skal bruke,
-[denne er beskrevet her](https://github.com/eivinwi/docker-client).
+[denne er beskrevet her](https://github.com/eivinwi/docker-javaapplication).
 
 
 
