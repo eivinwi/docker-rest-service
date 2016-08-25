@@ -58,7 +58,7 @@
     <h2>a)</h2>
     <p>
         I denne oppgaven tar vi utgangspunkt i workshoppens minimale Java-applikasjon DockerClient, som er konfigurert
-        med maven i pom.xml. Denne applikasjonene kan bygges med kommandoen 'mvn clean install', som lager en JAR-fil.
+        med maven i pom.xml. Denne applikasjonene kan bygges med kommandoen 'mvn clean install' (<strong>NB: forventer Java 8</strong>), som lager en JAR-fil.
 
         Sett f&oslash;rst et selvvalgt teamnavn i filen team.properties. Dette er for at du skal kunne kjenne igjen din applikasjon
         senere, uansett hvor den kj&oslash;rer. Bygg deretter applikasjonen og kj&oslash;r den med 'java -jar &lt;path-til-JAR&gt;'. G&aring; til
@@ -66,7 +66,8 @@
         og se applikasjonen er oppe og kj&oslash;rer og at lagnavn har blitt satt. Stopp applikasjonen f&oslash;r oppgave b).
     </p>
     <p class="alert alert-danger">
-        <b>NB:</b> om noe allerede kj&oslash;rer p&aring; port 8080 m&aring; en annen port spesifiseres.
+        <b>NB:</b> om noe allerede kj&oslash;rer p&aring; port 8080 m&aring; en annen port spesifiseres, kan gj&oslash;res
+        ved &aring; sende med <i>-Dserver.port=</i> som parameter ved kj&oslash;ring.
     </p>
 
     <h2>b)</h2>
