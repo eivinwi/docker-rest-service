@@ -28,88 +28,23 @@
     <h1>Installasjon og kj&oslash;ring av Docker</h1>
 
     <p>
-        Hvordan docker installeres er forskjellig avhengig av operativsystem. Installasjon
-        og bruk av Docker er noe enklere og krever f&aelig;rre steg p&aring; Linux, men man kan ogs&aring; fint
-        bruke Mac eller Windows. Lenker til de separate installasjonsinnstruksene finnes i tabellen under.
+        Tidligere måtte var det kun Linux som hadde en funksjonell native Docker-implementasjon, men native docker for
+        Mac og Windows har nå blitt såpass bra og stabilt at det er å foretrekke over å bruke virtualisert Docker via
+        Docker Toolbox.
     </p>
 
-    <table id="oversikt" class="table">
-        <thead>
-            <tr>
-                <td>Operativsystem</td>
-                <td>Informasjon</td>
-            </tr>
-        </thead>
-        <tr>
-            <td>
-                <a href="https://docs.docker.com/engine/installation/">Linux Docker</a><br/>
-                <a href="https://docs.docker.com/machine/install-machine/">Linux DockerMachine</a>
-            </td>
-            <td>
-                <div>Enkel, rett frem installasjon. Separat installasjon for Docker-machine (kreves fra og med oppgave 5).</div>
-                <div>Krever 64-bits versjon av Linux.</div>
-                <div>
-                    <b>Ikke</b> installer direkte fra package-managere som Apt/Yum/Pacman da docker konstant oppdateres,
-                    og versjonene derfra ofte blir utdaterte.
-                </div>
-                <div>Virtualbox m&aring; ogs&aring; installeres for den siste delen av workshoppen.</div>
-                <div>Tips: for &aring; slippe &aring; kj&oslash;re Docker som root kan du bruke kommadoen 'sudo usermod -aG docker &lt;brukernavn&gt;'</div>
-            </td>
-        </tr>
-        <tr>
-            <td><a href="https://www.docker.com/products/docker-toolbox">Mac</a></td>
-            <td>
-                <div>Anbefaler i denne omgang den eldre "Docker Toolbox"-versjonen, da det er den vi selv har testet tidligere.</div>
-                <div>Relativt enkel installasjon.</div>
-                <div>Krever minst OS X 10.8 Mountain Lion.</div>
-                <div>
-                    Krever Virtualbox (Dersom du har Virtualbox installert fra f&oslash;r huker du <span style="text-decoration: underline">ikke</span> av p&aring; installering
-                    av Virtualbox under installasjonen)
-                </div>
-                <div>(Spesielt interesserte kan som alternativ heller prøve <a href="https://www.docker.com/products/docker#/mac">den nye native-implementasjonen</a>)</div>
-            </td>
-        </tr>
-        <tr>
-            <td><a href="https://www.docker.com/products/docker-toolbox">Windows</a></td>
-            <td>
-                <div><strong>VIKTIG:</strong> Default-installasjon på Windows er nå en native-implementasjon som bruker noe som kalles Hyper-V.
-                    Denne implementasjonen har dog store utfordringer med flere av kjernekonseptene i Docker, og det anbefales derfor at man heller
-                    installerer "Docker Toolbox"-versjonen, som baserer seg på Virtualbox!! (lenken til venstre peker på Docker Toolbox)</div>
-                <div>Litt flere steg enn p&aring; Linux/Mac, men selve installasjonen er relativt grei.</div>
-                <div>Krever minst Windows 7.</div>
-                <div>Krever 64-bits Windows.</div>
-                <div>Krever at Virtualization er aktivert i BIOS. (Win8+: kan sjekkes i Oppgavebehandling -> Ytelse)</div>
-                <div>
-                    Krever Virtualbox (Dersom du har Virtualbox installert fra f&oslash;r huker du ikke av p&aring; installering
-                    av Virtualbox under installasjonen)
-                </div>
-                <div>
-                    Etter installasjon: for &aring; kj&oslash;re Docker-kommandoer brukes nylig installerte Docker Quickstart Terminal.
-                </div>
-            </td>
-        </tr>
-    </table>
+    <h2>Docker</h2>
+    <p>
+        For å installere docker-core, gå til <a href="https://store.docker.com/search?offering=community&type=edition">Docker Store</a>,
+        og velg versjonen for ditt OS fra listen. Følg så installasjonsinnstruksjonene.
+    </p>
 
-    <div class="alert alert-warning">
-        <strong>Merk: </strong> Docker programmene i seg selv bruker litt diskplass (opptill 400MB for Mac/Windows), og i
-        tillegg brukes det masse plass p&aring; &aring; opprette Docker images underveis. Det er derfor anbefalt &aring;
-        ha minst 20 gigabyte med ledig plass p&aring; maskinen, for &aring; slippe &aring; slette ting underveis.
-    </div>
-    <div id="opprydding" class="alert alert-danger">
-        For &aring; rydde opp ting laget med Docker etter at workshoppen kan man bruke kommandoene som er forklart
-        <a href="https://www.calazan.com/docker-cleanup-commands/">her</a>. Merk at noen av disse fjerner <strong>alle</strong>
-        images/containere laget av Docker, s&aring; v&aelig;r sikker p&aring; at du vil fjerne alt f&oslash;r du eventuelt kj&oslash;rer disse.
-        Hvis du velger &aring; avinstallere, s&aring; kan det ogs&aring; v&aelig;re kjekt &aring; slette alt under C:\Users\&lt;brukernavn&gt;\.docker eller /var/lib/docker.
-    </div>
-
-    <h2>Annen n&oslash;dvendig programvare som forventes installert</h2>
-    <ul>
-        <li><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java 8 SDK</a>. (Trenger ikke n&oslash;dvendigvis v&aelig;re Oracle).</li>
-        <li><a href="https://maven.apache.org/download.cgi">Maven 3</a></li>
-        <li>En fritt valgt SSH-client (OpenSSH, Putty eller lignende).</li>
-        <li>Programvare for filoverf&oslash;ring, som st&oslash;tter SCP eller FTP.</li>
-    </ul>
-    <div class="alert alert-success"><b>Merk:</b> OpenSSH f&oslash;lger med i Docker Toolbox, st&oslash;tter ssh/scp, og kan brukes fra Docker Quickstart Terminal!</div>
+    <h2>Docker Machine</h2>
+    <p>
+        For å installere docker-machine, gå til <a href="https://docs.docker.com/machine/install-machine/">Docker Docs</a>,
+        og følg installasjonsinstruksjonene. Merk at punkt 1, "Install the docker binary", allerede er utført når du har
+        installert Docker i avnsittet over.
+    </p>
 </div>
 </body>
 </html>
