@@ -5,10 +5,11 @@
   "description": "ERROR: No README data found!",
   "main": "gulpfile.js",
   "dependencies": {
-    "jquery": "^2.2.3",
     "bootstrap": "^4.0.0-alpha",
     "font-awesome": "^4.6.1",
-    "http-server": "^0.9.0"
+    "http-server": "^0.9.0",
+    "jquery": "^2.2.3",
+    "tether": "^1.4.0"
   },
   "repository": {
     "type": "git",
